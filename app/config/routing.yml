@@ -1,0 +1,5 @@
+ites_ac_backend:
+    resource: "@ItesACBackendBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
