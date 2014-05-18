@@ -5,12 +5,12 @@ namespace ItesAC\BackendBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Edificio
+ * Planta
  *
  * @ORM\Table()
  * @ORM\Entity
  */
-class Edificio
+class Planta
 {
     /**
      * @var integer
@@ -29,19 +29,19 @@ class Edificio
     private $nombre;
 
     /**
+     * @var ItesAC\BackendBundle\Entity\Edificio
+     *
+     * @ORM\ManyToOne(targetEntity="Edificio", inversedBy="plantas")
+     * @ORM\JoinColumn(name="edificio_id", referencedColumnName="id")
+     */
+    private $edificio;
+    
+    /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="Planta", mappedBy="edificio")
+     * @ORM\OneToMany(targetEntity="AireAcondicionado", mappedBy="planta")
      */
-    private $plantas;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->plantas = new \Doctrine\Common\Collections\ArrayCollection();
-    }
+    private $aires;
 
     /**
      * Get id
@@ -56,8 +56,8 @@ class Edificio
     /**
      * Set nombre
      *
-     * @param  string   $nombre
-     * @return Edificio
+     * @param  string $nombre
+     * @return Planta
      */
     public function setNombre($nombre)
     {
@@ -77,35 +77,25 @@ class Edificio
     }
 
     /**
-     * Add plantas
+     * Set edificio
      *
-     * @param  \ItesAC\BackendBundle\Entity\Planta $plantas
-     * @return Edificio
+     * @param  \ItesAC\BackendBundle\Entity\Edificio $edificio
+     * @return Planta
      */
-    public function addPlanta(\ItesAC\BackendBundle\Entity\Planta $plantas)
+    public function setEdificio(\ItesAC\BackendBundle\Entity\Edificio $edificio = null)
     {
-        $this->plantas[] = $plantas;
+        $this->edificio = $edificio;
 
         return $this;
     }
 
     /**
-     * Remove plantas
+     * Get edificio
      *
-     * @param \ItesAC\BackendBundle\Entity\Planta $plantas
+     * @return \ItesAC\BackendBundle\Entity\Edificio
      */
-    public function removePlanta(\ItesAC\BackendBundle\Entity\Planta $plantas)
+    public function getEdificio()
     {
-        $this->plantas->removeElement($plantas);
-    }
-
-    /**
-     * Get plantas
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getPlantas()
-    {
-        return $this->plantas;
+        return $this->edificio;
     }
 }

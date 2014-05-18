@@ -49,18 +49,18 @@ class AireAcondicionado
      * @ORM\JoinColumn(name="modelo_id", referencedColumnName="id")
      */
     private $modelo;
-
+    
     /**
      * @var AireAC\BackendBundle\Entity\Arduino
-     *
+     * 
      * @ORM\ManyToOne(targetEntity="Arduino")
      * @ORM\JoinColumn(name="arduino_id", referencedColumnName="id")
      */
     private $arduino;
-
+    
     /**
      * @var AireAC\BackendBundle\Entity\Planta
-     *
+     * 
      * @ORM\ManyToOne(targetEntity="Planta", inversedBy="aires")
      * @ORM\JoinColumn(name="planta_id", referencedColumnName="id")
      */
@@ -143,74 +143,5 @@ class AireAcondicionado
     public function getPosicionY()
     {
         return $this->posicionY;
-    }
-
-    /**
-     * Set modelo
-     *
-     * @param  \ItesAC\BackendBundle\Entity\Modelo $modelo
-     * @return AireAcondicionado
-     */
-    public function setModelo(\ItesAC\BackendBundle\Entity\Modelo $modelo = null)
-    {
-        $this->modelo = $modelo;
-
-        return $this;
-    }
-
-    /**
-     * Get modelo
-     *
-     * @return \ItesAC\BackendBundle\Entity\Modelo
-     */
-    public function getModelo()
-    {
-        return $this->modelo;
-    }
-
-    /**
-     * Set arduino
-     *
-     * @param  \ItesAC\BackendBundle\Entity\Arduino $arduino
-     * @return AireAcondicionado
-     */
-    public function setArduino(\ItesAC\BackendBundle\Entity\Arduino $arduino = null)
-    {
-        $this->arduino = $arduino;
-
-        return $this;
-    }
-
-    /**
-     * Get arduino
-     *
-     * @return \ItesAC\BackendBundle\Entity\Arduino
-     */
-    public function getArduino()
-    {
-        return $this->arduino;
-    }
-
-    /**
-     * Set planta
-     *
-     * @param  \ItesAC\BackendBundle\Entity\Planta $planta
-     * @return AireAcondicionado
-     */
-    public function setPlanta(\ItesAC\BackendBundle\Entity\Planta $planta = null)
-    {
-        $this->planta = $planta;
-
-        return $this;
-    }
-
-    /**
-     * Get planta
-     *
-     * @return \ItesAC\BackendBundle\Entity\Planta
-     */
-    public function getPlanta()
-    {
-        return $this->planta;
     }
 }
