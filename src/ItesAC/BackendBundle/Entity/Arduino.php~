@@ -3,6 +3,7 @@
 namespace ItesAC\BackendBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Arduino
@@ -24,7 +25,10 @@ class Arduino
     /**
      * @var string
      *
-     * @ORM\Column(name="ip", type="string", length=16)
+     * @Assert\Ip(
+     *      message="Escriba una Ip valida"
+     * )
+     * @ORM\Column(name="ip", type="string", length=20)
      */
     private $ip;
 

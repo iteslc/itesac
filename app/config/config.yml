@@ -67,3 +67,34 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+    
+knp_gaufrette:
+    stream_wrapper: ~
+
+    adapters:
+        modelos_adapter:
+            local:
+                directory: %kernel.root_dir%/../web/images/modelos
+        plantas_adapter:
+            local:
+                directory: %kernel.root_dir%/../web/images/plantas
+
+    filesystems:
+        modelos_image_fs:
+            adapter:    modelos_adapter
+        plantas_image_fs:
+            adapter:    plantas_adapter
+
+vich_uploader:
+    db_driver: orm
+    gaufrette: true
+    storage:   vich_uploader.storage.gaufrette
+    mappings:
+        modelos_image:
+            uri_prefix:         /images/modelos
+            upload_destination: modelos_image_fs
+            namer:              vich_uploader.namer_uniqid
+        plantas_image:
+            uri_prefix:         /images/plantas
+            upload_destination: plantas_image_fs
+            namer:              vich_uploader.namer_uniqid

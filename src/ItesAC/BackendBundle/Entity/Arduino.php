@@ -3,12 +3,15 @@
 namespace ItesAC\BackendBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Arduino
  *
  * @ORM\Table()
  * @ORM\Entity
+ * @UniqueEntity(fields="ip", message="Ya existe un arduino con esa ip")
  */
 class Arduino
 {
@@ -24,7 +27,10 @@ class Arduino
     /**
      * @var string
      *
-     * @ORM\Column(name="ip", type="string", length=16)
+     * @Assert\Ip(
+     *      message="Escriba una Ip valida"
+     * )
+     * @ORM\Column(name="ip", type="string", length=20)
      */
     private $ip;
 

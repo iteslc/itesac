@@ -3,12 +3,15 @@
 namespace ItesAC\BackendBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Edificio
  *
  * @ORM\Table()
  * @ORM\Entity
+ * @UniqueEntity(fields="nombre", message="Ya existe ese edificio")
  */
 class Edificio
 {
@@ -24,6 +27,13 @@ class Edificio
     /**
      * @var string
      *
+     * @Assert\NotNull(
+     *      message="Escriba un nombre para el edificio"
+     * )
+     * @Assert\Length(
+     *      min=1,
+     *      minMessage="Escriba un nombre para el edificio"
+     * )
      * @ORM\Column(name="nombre", type="string", length=5)
      */
     private $nombre;
@@ -107,5 +117,24 @@ class Edificio
     public function getPlantas()
     {
         return $this->plantas;
+    }
+
+    /**
+     * Get plantas disponibles
+     *
+     * @param  \ItesAC\BackendBundle\Entity\Planta $planta
+     * @return array
+     */
+    public function getPlantasDisponibles(\ItesAC\BackendBundle\Entity\Planta $planta)
+    {
+        $disponibles = array('PB','P1');
+        foreach ($this->getPlantas() as $plant) {
+            $isEqual = $plant->getNombre() === $planta->getNombre();
+            $index = array_search($plant->getNombre(), $disponibles);
+            if ($index!==null&&!$isEqual) {
+                unset($disponibles[$index]);
+            }
+        }
+        return $disponibles;
     }
 }

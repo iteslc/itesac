@@ -3,7 +3,7 @@
 namespace ItesAC\BackendBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Edificio
@@ -25,6 +25,13 @@ class Edificio
     /**
      * @var string
      *
+     * @Assert\NotNull(
+     *      message="Escriba un nombre para el edificio"
+     * )
+     * @Assert\Length(
+     *      min=1,
+     *      minMessage="Escriba un nombre para el edificio"
+     * )
      * @ORM\Column(name="nombre", type="string", length=5)
      */
     private $nombre;
