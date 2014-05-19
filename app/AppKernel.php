@@ -17,8 +17,11 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
             new ItesAC\BackendBundle\ItesACBackendBundle(),
+            new Braincrafted\BootstrapDemoBundle\BraincraftedBootstrapDemoBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
