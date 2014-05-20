@@ -52,6 +52,6 @@ class AireAcondicionadoType extends AbstractType
      */
     public function getName()
     {
-        return 'itesac_backendbundle_aireacondicionado';
+        return 'aireacondicionado';
     }
 }

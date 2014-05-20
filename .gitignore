@@ -8,8 +8,11 @@ app/bootstrap*
 vendor/*
 */logs/*
 */cache/*
-web/uploads/*
 web/bundles/*
+web/images/*
+web/fonts/*
+web/js/*
+web/css/*
 
 # Configuration files
 app/config/parameters.ini

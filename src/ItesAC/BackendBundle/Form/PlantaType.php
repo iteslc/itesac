@@ -4,9 +4,12 @@ namespace ItesAC\BackendBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use ItesAC\BackendBundle\Entity\Edificio;
+use ItesAC\BackendBundle\Entity\Planta;
 
 class PlantaType extends AbstractType
 {
@@ -19,23 +22,41 @@ class PlantaType extends AbstractType
         $builder->add('edificio','entity', array(
             'class' => 'ItesACBackendBundle:Edificio',
             'property' => 'nombre',
-        ));
+            'empty_value' => 'Escoge un edificio',
+            ))
+            ->add('image');
+        
+        $formModifier = function (FormInterface $form, Edificio $edificio = null, Planta $planta) {
+            $plantas = null === $edificio ? array() : $edificio->getPlantasDisponibles($planta);
+
+            $form->add('nombre', 'choice', array(
+                'empty_value' => 'Seleccione una planta',
+                'choices'     => $plantas,
+            ));
+        };
+
         $builder->addEventListener(
             FormEvents::PRE_SET_DATA,
-            function (FormEvent $event) {
-                $form = $event->getForm();
+            function (FormEvent $event) use ($formModifier) {
+                // this would be your entity, i.e. SportMeetup
                 $data = $event->getData();
-                
-                $edificio = $data->getEdificio();
 
-                $plantas = null === $edificio ? array() : $edificio->getPlantasDisponibles($data);
-
-                $form->add('nombre', 'choice', array(
-                    'choices'     => $plantas,
-                ));
+                $formModifier($event->getForm(), $data->getEdificio(), $data);
             }
         );
-        $builder->add('image');
+
+        $builder->get('edificio')->addEventListener(
+            FormEvents::POST_SUBMIT,
+            function (FormEvent $event) use ($formModifier) {
+                // It's important here to fetch $event->getForm()->getData(), as
+                // $event->getData() will get you the client data (that is, the ID)
+                $edificio = $event->getForm()->getData();
+
+                // since we've added the listener to the child, we'll have to pass on
+                // the parent to the callback functions!
+                $formModifier($event->getForm()->getParent(), $edificio, $event->getForm()->getParent()->getData());
+            }
+        );
     }
     
     /**
@@ -53,6 +74,6 @@ class PlantaType extends AbstractType
      */
     public function getName()
     {
-        return 'itesac_backendbundle_planta';
+        return 'planta';
     }
 }

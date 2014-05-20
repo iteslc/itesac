@@ -34,6 +34,6 @@ class EdificioType extends AbstractType
      */
     public function getName()
     {
-        return 'itesac_backendbundle_edificio';
+        return 'edificio';
     }
 }

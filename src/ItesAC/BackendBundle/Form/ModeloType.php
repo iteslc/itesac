@@ -35,6 +35,6 @@ class ModeloType extends AbstractType
      */
     public function getName()
     {
-        return 'itesac_backendbundle_modelo';
+        return 'modelo';
     }
 }

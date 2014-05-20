@@ -34,6 +34,6 @@ class ArduinoType extends AbstractType
      */
     public function getName()
     {
-        return 'itesac_backendbundle_arduino';
+        return 'arduino';
     }
 }

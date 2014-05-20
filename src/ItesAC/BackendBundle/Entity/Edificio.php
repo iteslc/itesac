@@ -125,9 +125,9 @@ class Edificio
      * @param  \ItesAC\BackendBundle\Entity\Planta $planta
      * @return array
      */
-    public function getPlantasDisponibles(\ItesAC\BackendBundle\Entity\Planta $planta)
+    public function getPlantasDisponibles(\ItesAC\BackendBundle\Entity\Planta $planta = null)
     {
-        $disponibles = array('PB','P1');
+        $disponibles = array('PB'=>'PB','P1'=>'P1');
         foreach ($this->getPlantas() as $plant) {
             $isEqual = $plant->getNombre() === $planta->getNombre();
             $index = array_search($plant->getNombre(), $disponibles);
