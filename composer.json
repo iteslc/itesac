@@ -1,8 +1,20 @@
 {
-    "name": "symfony/framework-standard-edition",
-    "license": "MIT",
+    "name": "geeklydh/itesac",
+    "license": "proprietary",
     "type": "project",
-    "description": "The \"Symfony Standard Edition\" distribution",
+    "description": "AC Control Platform",
+    "authors": [
+        {
+            "name": "Daniel Alejandro Cast",
+            "email": "dan_lex_castnirvana@hotmail.com",
+            "homepage": "https://twitter.com/DanLexCast",
+            "role": "Developer"
+        },
+        {
+            "name": "Daniel Gonzalez Villaseñor",
+            "role": "Developer"
+        }
+    ],
     "autoload": {
         "psr-0": { "": "src/" }
     },
@@ -20,13 +32,6 @@
         }
     ],
     "require": {
-        "twitter/bootstrap": "v3.0.0",
-    "leafo/lessphp": "0.4.0",
-        "jquery/jquery":  "1.10.*",
-    "braincrafted/bootstrap-bundle": "~2.0",
-    "knplabs/knp-menu": "dev-master",
-    "knplabs/knp-menu-bundle": "dev-master",
-    "knplabs/knp-paginator-bundle": "dev-master",     "php": ">=5.3.3",
         "php": ">=5.3.3",
         "symfony/symfony": "~2.4",
         "doctrine/orm": "~2.2,>=2.2.3",
@@ -41,7 +46,14 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "vich/uploader-bundle": "dev-master",
         "knplabs/gaufrette" : "0.2.*@dev",
-        "knplabs/knp-gaufrette-bundle" : "dev-master"
+        "knplabs/knp-gaufrette-bundle" : "dev-master",
+        "twitter/bootstrap": "v3.0.0",
+        "leafo/lessphp": "0.4.0",
+        "jquery/jquery":  "1.10.*",
+        "braincrafted/bootstrap-bundle": "~2.0",
+        "knplabs/knp-menu": "dev-master",
+        "knplabs/knp-menu-bundle": "dev-master",
+        "knplabs/knp-paginator-bundle": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [
