@@ -29,10 +29,10 @@ class AireAcondicionado
      *      message="Este campo es requerido."
      * )
      * @Assert\Range(
-     *      min="0",
-     *      max="10",
-     *      minMessage="El pin debe se un numero positivo",
-     *      maxMessage="Solo hay 10 pines"
+     *      min="2",
+     *      max="13",
+     *      minMessage="El pin debe ser del 2 al 13",
+     *      maxMessage="El pin debe ser del 2 al 13"
      * )
      * @ORM\Column(name="pin", type="smallint")
      */
@@ -77,7 +77,7 @@ class AireAcondicionado
      *      message="Seleccione un modelo"
      * )
      * @ORM\ManyToOne(targetEntity="Modelo")
-     * @ORM\JoinColumn(name="modelo_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="modelo_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $modelo;
 
@@ -87,8 +87,8 @@ class AireAcondicionado
      * @Assert\NotNull(
      *      message="Seleccione un arduino"
      * )
-     * @ORM\ManyToOne(targetEntity="Arduino")
-     * @ORM\JoinColumn(name="arduino_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Arduino", inversedBy="aires")
+     * @ORM\JoinColumn(name="arduino_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $arduino;
 
@@ -99,9 +99,20 @@ class AireAcondicionado
      *      message="Seleccione una planta"
      * )
      * @ORM\ManyToOne(targetEntity="Planta", inversedBy="aires")
-     * @ORM\JoinColumn(name="planta_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="planta_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $planta;
+
+    /**
+     * @var AireAC\BackendBundle\Entity\Edificio
+     *
+     * @Assert\NotNull(
+     *      message="Seleccione un edificio"
+     * )
+     * @ORM\ManyToOne(targetEntity="Edificio", inversedBy="aires")
+     * @ORM\JoinColumn(name="edificio_id", referencedColumnName="id", onDelete="CASCADE")
+     */
+    private $edificio;
 
     /**
      * Get id
@@ -249,5 +260,46 @@ class AireAcondicionado
     public function getPlanta()
     {
         return $this->planta;
+    }
+
+    /**
+     * Set edificio
+     *
+     * @param  \ItesAC\BackendBundle\Entity\Edificio $edificio
+     * @return AireAcondicionado
+     */
+    public function setEdificio(\ItesAC\BackendBundle\Entity\Edificio $edificio = null)
+    {
+        $this->edificio = $edificio;
+
+        return $this;
+    }
+
+    /**
+     * Get edificio
+     *
+     * @return \ItesAC\BackendBundle\Entity\Edificio
+     */
+    public function getEdificio()
+    {
+        return $this->edificio;
+    }
+
+    /**
+     * is Congruente el edificio con el arduino
+     *
+     * @return boolean
+     *
+     * @Assert\True(
+     *  message="El arduino no es valido para ese edificio"
+     * )
+     */
+    public function isEdificioYArduinoCongruente()
+    {
+        if ($this->edificio===$this->arduino->getEdificio()||$this->arduino->getEdificio()===null) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

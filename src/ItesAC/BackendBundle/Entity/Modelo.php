@@ -46,7 +46,7 @@ class Modelo
      * @Assert\NotNull(
      *      message="Una imagen es requerida"
      * )
-     * @Assert\File(
+     * @Assert\Image(
      *     maxSize="1M",
      *     mimeTypes={"image/png"},
      *     maxSizeMessage="El limite de carga es de 1M",

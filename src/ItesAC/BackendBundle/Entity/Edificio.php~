@@ -4,12 +4,14 @@ namespace ItesAC\BackendBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Edificio
  *
  * @ORM\Table()
  * @ORM\Entity
+ * @UniqueEntity(fields="nombre", message="Ya existe ese edificio")
  */
 class Edificio
 {
@@ -42,6 +44,20 @@ class Edificio
      * @ORM\OneToMany(targetEntity="Planta", mappedBy="edificio")
      */
     private $plantas;
+    
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="AireAcondicionado", mappedBy="edificio")
+     */
+    private $aires;
+    
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Arduino", mappedBy="edificio")
+     */
+    private $arduinos;
 
     /**
      * Constructor
@@ -49,6 +65,7 @@ class Edificio
     public function __construct()
     {
         $this->plantas = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->aires = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -115,5 +132,57 @@ class Edificio
     public function getPlantas()
     {
         return $this->plantas;
+    }
+
+    /**
+     * Get plantas disponibles
+     *
+     * @param  \ItesAC\BackendBundle\Entity\Planta $planta
+     * @return array
+     */
+    public function getPlantasDisponibles(\ItesAC\BackendBundle\Entity\Planta $planta = null)
+    {
+        $disponibles = array('PB'=>'PB','P1'=>'P1');
+        foreach ($this->getPlantas() as $plant) {
+            $isEqual = $plant->getNombre() === $planta->getNombre();
+            $index = array_search($plant->getNombre(), $disponibles);
+            if ($index!==null&&!$isEqual) {
+                unset($disponibles[$index]);
+            }
+        }
+        return $disponibles;
+    }
+
+    /**
+     * Add aires
+     *
+     * @param \ItesAC\BackendBundle\Entity\AireAcondicionado $aires
+     * @return Edificio
+     */
+    public function addAire(\ItesAC\BackendBundle\Entity\AireAcondicionado $aires)
+    {
+        $this->aires[] = $aires;
+
+        return $this;
+    }
+
+    /**
+     * Remove aires
+     *
+     * @param \ItesAC\BackendBundle\Entity\AireAcondicionado $aires
+     */
+    public function removeAire(\ItesAC\BackendBundle\Entity\AireAcondicionado $aires)
+    {
+        $this->aires->removeElement($aires);
+    }
+
+    /**
+     * Get aires
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAires()
+    {
+        return $this->aires;
     }
 }

@@ -44,7 +44,7 @@ class Planta
      *
      * @Assert\NotNull
      * @ORM\ManyToOne(targetEntity="Edificio", inversedBy="plantas")
-     * @ORM\JoinColumn(name="edificio_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="edificio_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $edificio;
 
@@ -61,7 +61,7 @@ class Planta
      * @Assert\NotNull(
      *      message="Un mapa de la planta es requerida"
      * )
-     * @Assert\File(
+     * @Assert\Image(
      *     maxSize="1M",
      *     mimeTypes={"image/png"},
      *     maxSizeMessage="El limite de carga es de 1M",

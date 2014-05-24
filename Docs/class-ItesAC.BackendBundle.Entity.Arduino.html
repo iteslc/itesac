@@ -7,7 +7,7 @@
 	<title>Class ItesAC\BackendBundle\Entity\Arduino | ItesAC</title>
 
 	<script type="text/javascript" src="resources/combined.js?3612703374"></script>
-	<script type="text/javascript" src="elementlist.js?309671321"></script>
+	<script type="text/javascript" src="elementlist.js?1449642761"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -25,11 +25,19 @@
 						<ul>
 				<li class="active"><a href="namespace-ItesAC.BackendBundle.html">BackendBundle<span></span></a>
 						<ul>
+				<li><a href="namespace-ItesAC.BackendBundle.Controller.html">Controller</a>
+						</li>
 				<li><a href="namespace-ItesAC.BackendBundle.DependencyInjection.html">DependencyInjection</a>
 						</li>
 				<li class="active"><a href="namespace-ItesAC.BackendBundle.Entity.html">Entity</a>
 						</li>
-							</ul></li></ul></li>
+				<li><a href="namespace-ItesAC.BackendBundle.Form.html">Form</a>
+						</li>
+				<li><a href="namespace-ItesAC.BackendBundle.Tests.html">Tests<span></span></a>
+						<ul>
+				<li><a href="namespace-ItesAC.BackendBundle.Tests.Controller.html">Controller</a>
+						</li>
+							</ul></li></ul></li></ul></li>
 			</ul>
 		</div>
 
@@ -113,13 +121,48 @@
 				<br />
 				<b>ORM\Table()</b>
 				<br />
-		<b>Located at</b> <a href="source-class-ItesAC.BackendBundle.Entity.Arduino.html#7-63" title="Go to source code">src/ItesAC/BackendBundle/Entity/Arduino.php</a><br />
+				<b>UniqueEntity(fields="ip",:</b>
+				message="Ya existe un arduino con esa ip")<br />
+		<b>Located at</b> <a href="source-class-ItesAC.BackendBundle.Entity.Arduino.html#9-177" title="Go to source code">src/ItesAC/BackendBundle/Entity/Arduino.php</a><br />
 	</div>
 
 
 
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
+	<tr data-order="__construct" id="___construct">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___construct">#</a>
+		<code><a href="source-class-ItesAC.BackendBundle.Entity.Arduino.html#52-58" title="Go to source code">__construct</a>( )</code>
+
+		<div class="description short">
+			
+<p>Constructor</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Constructor</p>
+
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="getId" id="_getId">
 
 		<td class="attributes"><code>
@@ -131,7 +174,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getId">#</a>
-		<code><a href="source-class-ItesAC.BackendBundle.Entity.Arduino.html#31-39" title="Go to source code">getId</a>( )</code>
+		<code><a href="source-class-ItesAC.BackendBundle.Entity.Arduino.html#60-68" title="Go to source code">getId</a>( )</code>
 
 		<div class="description short">
 			
@@ -168,7 +211,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setIp">#</a>
-		<code><a href="source-class-ItesAC.BackendBundle.Entity.Arduino.html#41-52" title="Go to source code">setIp</a>( <span>string <var>$ip</var></span> )</code>
+		<code><a href="source-class-ItesAC.BackendBundle.Entity.Arduino.html#70-81" title="Go to source code">setIp</a>( <span>string <var>$ip</var></span> )</code>
 
 		<div class="description short">
 			
@@ -210,7 +253,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getIp">#</a>
-		<code><a href="source-class-ItesAC.BackendBundle.Entity.Arduino.html#54-62" title="Go to source code">getIp</a>( )</code>
+		<code><a href="source-class-ItesAC.BackendBundle.Entity.Arduino.html#83-91" title="Go to source code">getIp</a>( )</code>
 
 		<div class="description short">
 			
@@ -228,6 +271,244 @@
 				<h4>Returns</h4>
 				<div class="list">
 					<code>string</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="addAire" id="_addAire">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-ItesAC.BackendBundle.Entity.Arduino.html">ItesAC\BackendBundle\Entity\Arduino</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_addAire">#</a>
+		<code><a href="source-class-ItesAC.BackendBundle.Entity.Arduino.html#93-107" title="Go to source code">addAire</a>( <span><code><a href="class-ItesAC.BackendBundle.Entity.AireAcondicionado.html">ItesAC\BackendBundle\Entity\AireAcondicionado</a></code> <var>$aires</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Add aires</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Add aires</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$aires</var></dt>
+					<dd><code><code><a href="class-ItesAC.BackendBundle.Entity.AireAcondicionado.html">ItesAC\BackendBundle\Entity\AireAcondicionado</a></code></code><br>$aires</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-ItesAC.BackendBundle.Entity.Arduino.html">ItesAC\BackendBundle\Entity\Arduino</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="removeAire" id="_removeAire">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_removeAire">#</a>
+		<code><a href="source-class-ItesAC.BackendBundle.Entity.Arduino.html#109-120" title="Go to source code">removeAire</a>( <span><code><a href="class-ItesAC.BackendBundle.Entity.AireAcondicionado.html">ItesAC\BackendBundle\Entity\AireAcondicionado</a></code> <var>$aires</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Remove aires</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Remove aires</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$aires</var></dt>
+					<dd><code><code><a href="class-ItesAC.BackendBundle.Entity.AireAcondicionado.html">ItesAC\BackendBundle\Entity\AireAcondicionado</a></code></code><br>$aires</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getAires" id="_getAires">
+
+		<td class="attributes"><code>
+			 public 
+			Doctrine\Common\Collections\Collection
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getAires">#</a>
+		<code><a href="source-class-ItesAC.BackendBundle.Entity.Arduino.html#122-130" title="Go to source code">getAires</a>( )</code>
+
+		<div class="description short">
+			
+<p>Get aires</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get aires</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>Doctrine\Common\Collections\Collection</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getPinesDisponibles" id="_getPinesDisponibles">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getPinesDisponibles">#</a>
+		<code><a href="source-class-ItesAC.BackendBundle.Entity.Arduino.html#132-153" title="Go to source code">getPinesDisponibles</a>( <span><code><a href="class-ItesAC.BackendBundle.Entity.AireAcondicionado.html">ItesAC\BackendBundle\Entity\AireAcondicionado</a></code> <var>$aire</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Obtiene pines disponibles del arduino</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Obtiene pines disponibles del arduino</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$aire</var></dt>
+					<dd><code><code><a href="class-ItesAC.BackendBundle.Entity.AireAcondicionado.html">ItesAC\BackendBundle\Entity\AireAcondicionado</a></code></code><br>$aire</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setEdificio" id="_setEdificio">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-ItesAC.BackendBundle.Entity.Arduino.html">ItesAC\BackendBundle\Entity\Arduino</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setEdificio">#</a>
+		<code><a href="source-class-ItesAC.BackendBundle.Entity.Arduino.html#155-166" title="Go to source code">setEdificio</a>( <span><code><a href="class-ItesAC.BackendBundle.Entity.Edificio.html">ItesAC\BackendBundle\Entity\Edificio</a></code> <var>$edificio</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Set edificio</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Set edificio</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$edificio</var></dt>
+					<dd><code><code><a href="class-ItesAC.BackendBundle.Entity.Edificio.html">ItesAC\BackendBundle\Entity\Edificio</a></code></code><br>$edificio</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-ItesAC.BackendBundle.Entity.Arduino.html">ItesAC\BackendBundle\Entity\Arduino</a></code></code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getEdificio" id="_getEdificio">
+
+		<td class="attributes"><code>
+			 public 
+			<code><a href="class-ItesAC.BackendBundle.Entity.Edificio.html">ItesAC\BackendBundle\Entity\Edificio</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getEdificio">#</a>
+		<code><a href="source-class-ItesAC.BackendBundle.Entity.Arduino.html#168-176" title="Go to source code">getEdificio</a>( )</code>
+
+		<div class="description short">
+			
+<p>Get edificio</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get edificio</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-ItesAC.BackendBundle.Entity.Edificio.html">ItesAC\BackendBundle\Entity\Edificio</a></code></code><br />
 				</div>
 
 

@@ -5,6 +5,7 @@ namespace ItesAC\BackendBundle\Entity;
 use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
@@ -12,6 +13,8 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  *
  * @ORM\Table()
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks()
+ * @UniqueEntity(fields="alias", message="Ya existe esa planta")
  * @Vich\Uploadable
  */
 class Planta
@@ -54,7 +57,7 @@ class Planta
 
     /**
      * @var File
-     * 
+     *
      * @Assert\NotNull(
      *      message="Un mapa de la planta es requerida"
      * )
@@ -64,24 +67,24 @@ class Planta
      *     maxSizeMessage="El limite de carga es de 1M",
      *     mimeTypesMessage="Debe ser una imagen png"
      * )
-     * @Vich\UploadableField(mapping="modelos_image", fileNameProperty="imageName") 
+     * @Vich\UploadableField(mapping="modelos_image", fileNameProperty="imageName")
      */
     private $image;
-    
+
     /**
      * @var string
-     * 
+     *
      * @ORM\Column(type="string", length=255, name="image_name")
      */
     private $imageName;
-    
+
     /**
      * @var string
-     * 
+     *
      * @ORM\Column(type="string", length=255, name="alias")
      */
     private $alias;
-    
+
     /**
      * Constructor
      */
@@ -182,7 +185,7 @@ class Planta
     /**
      * Set imageName
      *
-     * @param string $imageName
+     * @param  string $imageName
      * @return Planta
      */
     public function setImageName($imageName)
@@ -195,15 +198,15 @@ class Planta
     /**
      * Get imageName
      *
-     * @return string 
+     * @return string
      */
     public function getImageName()
     {
         return $this->imageName;
     }
-    
+
     /**
-     * 
+     *
      * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
      */
     public function setImage(File $image)
@@ -217,5 +220,44 @@ class Planta
     public function getImage()
     {
         return $this->image;
+    }
+
+    /**
+     * Set alias
+     *
+     * @return Planta
+     *
+     */
+    public function setAlias()
+    {
+        $this->alias = "Edificio " . $this->getEdificio()->getNombre() . " " . $this->nombre;
+
+        return $this;
+    }
+
+    /**
+     * Get alias
+     *
+     * @return string
+     */
+    public function getAlias()
+    {
+        return $this->alias;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function postPersist()
+    {
+        $this->setAlias();
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function postUpdate()
+    {
+        $this->setAlias();
     }
 }

@@ -4,12 +4,14 @@ namespace ItesAC\BackendBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Arduino
  *
  * @ORM\Table()
  * @ORM\Entity
+ * @UniqueEntity(fields="ip", message="Ya existe un arduino con esa ip")
  */
 class Arduino
 {
@@ -31,6 +33,29 @@ class Arduino
      * @ORM\Column(name="ip", type="string", length=20)
      */
     private $ip;
+    
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="AireAcondicionado", mappedBy="arduino")
+     */
+    private $aires;
+    
+    /**
+     * @var ItesAC\BackendBundle\Entity\Edificio
+     * 
+     * @ORM\ManyToOne(targetEntity="Edificio", inversedBy="arduinos")
+     * @ORM\JoinColumn(name="edificio_id", referencedColumnName="id")
+     */
+    private $edificio;
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->aires = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -63,5 +88,56 @@ class Arduino
     public function getIp()
     {
         return $this->ip;
+    }
+
+    /**
+     * Add aires
+     *
+     * @param \ItesAC\BackendBundle\Entity\AireAcondicionado $aires
+     * @return Arduino
+     */
+    public function addAire(\ItesAC\BackendBundle\Entity\AireAcondicionado $aires)
+    {
+        $this->aires[] = $aires;
+
+        return $this;
+    }
+
+    /**
+     * Remove aires
+     *
+     * @param \ItesAC\BackendBundle\Entity\AireAcondicionado $aires
+     */
+    public function removeAire(\ItesAC\BackendBundle\Entity\AireAcondicionado $aires)
+    {
+        $this->aires->removeElement($aires);
+    }
+
+    /**
+     * Get aires
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAires()
+    {
+        return $this->aires;
+    }
+    
+    /**
+     * 
+     */
+    public function getPinesDisponibles(\ItesAC\BackendBundle\Entity\AireAcondicionado $aire) {
+        $disponibles = array();
+        for($i=2;$i<=13;$i++){
+            $disponibles[$i]=$i;
+        }
+        foreach ($this->getAires() as $air) {
+            $isEqual = $air->getPin() === $aire->getPin();
+            $index = array_search($air->getPin(), $disponibles);
+            if ($index!==null&&!$isEqual) {
+                unset($disponibles[$index]);
+            }
+        }
+        return $disponibles;
     }
 }

@@ -14,3 +14,9 @@
     <li>{{ form(delete_form) }}</li>
 </ul>
 {% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts '@ItesACBackendBundle/Resources/public/js/dependedSelect.js' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}

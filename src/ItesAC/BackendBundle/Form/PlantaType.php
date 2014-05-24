@@ -15,7 +15,7 @@ class PlantaType extends AbstractType
 {
         /**
      * @param FormBuilderInterface $builder
-     * @param array $options
+     * @param array                $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -23,9 +23,10 @@ class PlantaType extends AbstractType
             'class' => 'ItesACBackendBundle:Edificio',
             'property' => 'nombre',
             'empty_value' => 'Escoge un edificio',
+            'attr' => array('class' => 'changer', 'data-target' => '#planta_nombre'),
             ))
             ->add('image');
-        
+
         $formModifier = function (FormInterface $form, Edificio $edificio = null, Planta $planta) {
             $plantas = null === $edificio ? array() : $edificio->getPlantasDisponibles($planta);
 
@@ -57,8 +58,11 @@ class PlantaType extends AbstractType
                 $formModifier($event->getForm()->getParent(), $edificio, $event->getForm()->getParent()->getData());
             }
         );
+        $builder->addEventListener(FormEvents::POST_SUBMIT, function ($event) {
+            $event->stopPropagation();
+        }, 900);
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */

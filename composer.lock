@@ -282,16 +282,16 @@
         },
         {
             "name": "doctrine/common",
-            "version": "v2.4.1",
+            "version": "v2.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/common.git",
-                "reference": "ceb18cf9b0230f3ea208b6238130fd415abda0a7"
+                "reference": "5db6ab40e4c531f14dad4ca96a394dfce5d4255b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/common/zipball/ceb18cf9b0230f3ea208b6238130fd415abda0a7",
-                "reference": "ceb18cf9b0230f3ea208b6238130fd415abda0a7",
+                "url": "https://api.github.com/repos/doctrine/common/zipball/5db6ab40e4c531f14dad4ca96a394dfce5d4255b",
+                "reference": "5db6ab40e4c531f14dad4ca96a394dfce5d4255b",
                 "shasum": ""
             },
             "require": {
@@ -301,6 +301,9 @@
                 "doctrine/inflector": "1.*",
                 "doctrine/lexer": "1.*",
                 "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~3.7"
             },
             "type": "library",
             "extra": {
@@ -353,7 +356,7 @@
                 "persistence",
                 "spl"
             ],
-            "time": "2013-09-07 10:20:34"
+            "time": "2014-05-21 19:28:51"
         },
         {
             "name": "doctrine/dbal",
@@ -1402,16 +1405,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/liip/LiipImagineBundle.git",
-                "reference": "e3a28ed6c6624b1d4164cbc14cbf4883acabcd8b"
+                "reference": "92e649516294ff4b195e90179294246db11072d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liip/LiipImagineBundle/zipball/e3a28ed6c6624b1d4164cbc14cbf4883acabcd8b",
-                "reference": "e3a28ed6c6624b1d4164cbc14cbf4883acabcd8b",
+                "url": "https://api.github.com/repos/liip/LiipImagineBundle/zipball/92e649516294ff4b195e90179294246db11072d5",
+                "reference": "92e649516294ff4b195e90179294246db11072d5",
                 "shasum": ""
             },
             "require": {
-                "imagine/imagine": "0.5.*",
+                "imagine/imagine": "~0.5,<0.7",
                 "php": ">=5.3.2",
                 "symfony/filesystem": "~2.3",
                 "symfony/finder": "~2.3",
@@ -1467,7 +1470,7 @@
                 "image",
                 "imagine"
             ],
-            "time": "2014-05-05 11:19:29"
+            "time": "2014-05-22 08:43:31"
         },
         {
             "name": "monolog/monolog",
@@ -2015,16 +2018,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v2.4.4",
+            "version": "v2.4.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "4697c33cdfb520dcf83fd6e4f7864fa26ddaebea"
+                "reference": "885b6d17447fcc3cd9c42622321e5af4283dbde1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/4697c33cdfb520dcf83fd6e4f7864fa26ddaebea",
-                "reference": "4697c33cdfb520dcf83fd6e4f7864fa26ddaebea",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/885b6d17447fcc3cd9c42622321e5af4283dbde1",
+                "reference": "885b6d17447fcc3cd9c42622321e5af4283dbde1",
                 "shasum": ""
             },
             "require": {
@@ -2126,7 +2129,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2014-04-27 13:39:18"
+            "time": "2014-05-22 21:04:05"
         },
         {
             "name": "twig/extensions",
@@ -2278,12 +2281,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dustin10/VichUploaderBundle.git",
-                "reference": "e28900d109e3d3c6d4493095fb3d7a1b2b5ae39a"
+                "reference": "886f034c928d14e5499abec341270e14f197f209"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/e28900d109e3d3c6d4493095fb3d7a1b2b5ae39a",
-                "reference": "e28900d109e3d3c6d4493095fb3d7a1b2b5ae39a",
+                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/886f034c928d14e5499abec341270e14f197f209",
+                "reference": "886f034c928d14e5499abec341270e14f197f209",
                 "shasum": ""
             },
             "require": {
@@ -2334,7 +2337,7 @@
                 "file uploads",
                 "upload"
             ],
-            "time": "2014-05-16 17:42:59"
+            "time": "2014-05-22 17:28:33"
         }
     ],
     "packages-dev": [

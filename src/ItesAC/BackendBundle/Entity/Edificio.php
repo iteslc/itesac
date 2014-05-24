@@ -46,11 +46,19 @@ class Edificio
     private $plantas;
 
     /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="AireAcondicionado", mappedBy="edificio")
+     */
+    private $aires;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->plantas = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->aires = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -135,6 +143,40 @@ class Edificio
                 unset($disponibles[$index]);
             }
         }
+
         return $disponibles;
+    }
+
+    /**
+     * Add aires
+     *
+     * @param  \ItesAC\BackendBundle\Entity\AireAcondicionado $aires
+     * @return Edificio
+     */
+    public function addAire(\ItesAC\BackendBundle\Entity\AireAcondicionado $aires)
+    {
+        $this->aires[] = $aires;
+
+        return $this;
+    }
+
+    /**
+     * Remove aires
+     *
+     * @param \ItesAC\BackendBundle\Entity\AireAcondicionado $aires
+     */
+    public function removeAire(\ItesAC\BackendBundle\Entity\AireAcondicionado $aires)
+    {
+        $this->aires->removeElement($aires);
+    }
+
+    /**
+     * Get aires
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAires()
+    {
+        return $this->aires;
     }
 }
