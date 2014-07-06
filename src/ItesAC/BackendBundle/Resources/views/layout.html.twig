@@ -1,0 +1,16 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <div class="row col-xs-12 col-sm-7 col-md-6" style="padding-top:15px;">
+        <div class="container">
+            <div class="panel panel-primary">
+                <!-- Default panel contents -->
+                <div class="panel-heading">{% block encabezado %}{% endblock %}</div>
+                <!-- Table -->
+                <div class="panel-body">
+                    {% block cuerpo %}{% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
