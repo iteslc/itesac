@@ -11,7 +11,7 @@ use Knp\Menu\FactoryInterface;
  */
 class Builder {
 
-    public function menuAction(FactoryInterface $factory, array $options) {
+    public function backendMenu(FactoryInterface $factory, array $options) {
         $menu = $factory->createItem('root');
         
         $menu->addChild('Aire Acondicionado', array('route' => 'ac'));
