@@ -1,24 +1,24 @@
-{% extends '::base.html.twig' %}
-
-{% block body -%}
-    <h1>AireAcondicionado edit</h1>
-
+{% extends 'ItesACBackendBundle::layout.html.twig' %}
+{% block encabezado %}Editar Aire Acondicionado{% endblock %}
+{% block cuerpo %}
+<div class="col-xs-12 col-sm-6 col-md-6">
     {{ form(edit_form) }}
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('ac') }}">
+</div>
+<div class="record_actions" style="padding:25px;">
+	<div class="col-xs-5 col-sm-4 col-md-3">
+        <a href="{{ path('ac') }}" class="btn btn-default" role="button">
             Back to the list
         </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
-        <div id="ac_position" 
-             style="border: 2px solid black; width: 900px; height: 400px; background-size: cover; background-image: url('/Geekly%20Development%20House/ItesAC/web/{{vich_uploader_asset(entity.planta, 'image')}}'); ">
-            <img style="position: relative;left:{{entity.posicionX}}px;top:{{entity.posicionY}}px;"
-            src="{{ asset('/bundles/itesacbackend/images/ac_vector.png') | imagine_filter('mini_ac') }}" 
-            id="actarget"/>
-        </div>
+    </div>
+    <div class="col-xs-3 col-sm-2 col-md-3">
+    	{{ form(delete_form) }}
+    </div>
+</div>
+<div id="ac_position" style="border: 2px solid black; width: 900px; height: 400px; background-size: cover; background-image: url('/Geekly%20Development%20House/ItesAC/web/{{vich_uploader_asset(entity.planta, 'image')}}'); ">
+    <img style="position: relative;left:{{entity.posicionX}}px;top:{{entity.posicionY}}px;"
+    src="{{ asset('/bundles/itesacbackend/images/ac_vector.png') | imagine_filter('mini_ac') }}" 
+    id="actarget"/>
+</div>
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}

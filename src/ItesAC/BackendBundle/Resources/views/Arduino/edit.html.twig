@@ -1,16 +1,17 @@
-{% extends '::base.html.twig' %}
-
-{% block body -%}
-    <h1>Arduino edit</h1>
-
+{% extends 'ItesACBackendBundle::layout.html.twig' %}
+{% block encabezado %}Editar Arduino{% endblock %}
+{% block cuerpo %}
+<div class="col-xs-12 col-sm-6 col-md-6">
     {{ form(edit_form) }}
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('arduino') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+</div>
+<div class="record_actions" style="padding:25px;">
+	<div class="col-xs-5 col-sm-4 col-md-3">
+	    <a href="{{ path('arduino') }}" class="btn btn-default" role="button">
+	        Back to the list
+	    </a>
+	</div>
+    <div class="col-xs-3 col-sm-2 col-md-3">
+    	{{ form(delete_form) }}
+    </div>
+</div>
 {% endblock %}

@@ -1,9 +1,8 @@
-{% extends '::base.html.twig' %}
-
-{% block body -%}
-    <h1>Arduino list</h1>
-
-    <table class="records_list">
+{% extends 'ItesACBackendBundle::layout.html.twig' %}
+{% block encabezado %}Listado de arduinos{% endblock %}
+{% block cuerpo %}
+<div class="table-responsive">
+    <table class="records_list table">
         <thead>
             <tr>
                 <th>Id</th>
@@ -17,25 +16,23 @@
                 <td><a href="{{ path('arduino_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{{ entity.ip }}</td>
                 <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('arduino_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('arduino_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
+                <div class="btn-group hidden-xs">
+                        <a href="{{ path('arduino_show', { 'id': entity.id }) }}" class="btn btn-default" role="button">show</a>
+                        <a href="{{ path('arduino_edit', { 'id': entity.id }) }}" class="btn btn-default" role="button">edit</a>
+                    </div>
+                    <div class="btn-group-vertical visible-xs">
+                        <a href="{{ path('arduino_show', { 'id': entity.id }) }}" class="btn btn-default" role="button">show</a>
+                        <a href="{{ path('arduino_edit', { 'id': entity.id }) }}" class="btn btn-default" role="button">edit</a>
+                    </div>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-        <ul>
-        <li>
-            <a href="{{ path('arduino_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
-    {% endblock %}
+</div>
+<div class="pull-right">
+        <a href="{{ path('arduino_new') }}" class="btn btn-primary" role="button">
+            Create a new entry
+        </a>
+</div>
+{% endblock %}

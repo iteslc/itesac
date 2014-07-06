@@ -1,9 +1,8 @@
-{% extends '::base.html.twig' %}
-
-{% block body -%}
-    <h1>Arduino</h1>
-
-    <table class="record_properties">
+{% extends 'ItesACBackendBundle::layout.html.twig' %}
+{% block encabezado %}Arduino{% endblock %}
+{% block cuerpo %}
+<div class="table-responsive">
+    <table class="record_properties table">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -15,18 +14,18 @@
             </tr>
         </tbody>
     </table>
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('arduino') }}">
+</div>
+<div class="record_actions row">
+    <div class="btn-group col-xs-8 col-sm-8 col-md-8">
+        <a href="{{ path('arduino') }}" class="btn btn-default" role="button">
             Back to the list
         </a>
-    </li>
-    <li>
-        <a href="{{ path('arduino_edit', { 'id': entity.id }) }}">
+        <a href="{{ path('arduino_edit', { 'id': entity.id }) }}" class="btn btn-default" role="button">
             Edit
         </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-4">
+        {{ form(delete_form) }}
+    </div>
+</div>
 {% endblock %}

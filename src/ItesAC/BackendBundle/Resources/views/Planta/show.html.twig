@@ -1,9 +1,8 @@
-{% extends '::base.html.twig' %}
-
-{% block body -%}
-    <h1>Planta</h1>
-
-    <table class="record_properties">
+{% extends 'ItesACBackendBundle::layout.html.twig' %}
+{% block encabezado %}Planta{% endblock %}
+{% block cuerpo %}
+<div class="table-responsive">
+    <table class="record_properties table">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -19,18 +18,18 @@
             </tr>
         </tbody>
     </table>
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('planta') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('planta_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+</div>
+<div class="row record_actions">
+    <div class="btn-group col-xs-8 col-sm-8 col-md-8">
+            <a href="{{ path('planta') }}" class="btn btn-default" role="button">
+                Back to the list
+            </a>
+            <a href="{{ path('planta_edit', { 'id': entity.id }) }}" class="btn btn-default" role="button">
+                Edit
+            </a>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-4">
+            {{ form(delete_form) }}
+    </div>
+</div>
 {% endblock %}

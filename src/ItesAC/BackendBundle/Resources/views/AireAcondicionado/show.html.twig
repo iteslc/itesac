@@ -1,45 +1,44 @@
-{% extends '::base.html.twig' %}
-
-{% block body -%}
-    <h1>AireAcondicionado</h1>
-
-    <table class="record_properties">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>Pin</th>
-                <td>{{ entity.pin }}</td>
-            </tr>
-            <tr>
-                <th>Posicionx</th>
-                <td>{{ entity.posicionX }}</td>
-            </tr>
-            <tr>
-                <th>Posiciony</th>
-                <td>{{ entity.posicionY }}</td>
-            </tr>
-        </tbody>
-    </table>
-        <div id="ac_position" 
+{% extends 'ItesACBackendBundle::layout.html.twig' %}
+{% block encabezado %}Aire Acondicionado{% endblock %}
+{% block cuerpo %}
+    <div class="table-responsive">
+        <table class="record_properties table">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ entity.id }}</td>
+                </tr>
+                <tr>
+                    <th>Pin</th>
+                    <td>{{ entity.pin }}</td>
+                </tr>
+                <tr>
+                    <th>Posicionx</th>
+                    <td>{{ entity.posicionX }}</td>
+                </tr>
+                <tr>
+                    <th>Posiciony</th>
+                    <td>{{ entity.posicionY }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="ac_position" 
              style="border: 2px solid black; width: 900px; height: 400px; background-size: cover; background-image: url('/Geekly%20Development%20House/ItesAC/web/{{vich_uploader_asset(entity.planta, 'image')}}'); ">
             <img style="position: relative;left:{{entity.posicionX}}px;top:{{entity.posicionY}}px;"
             src="{{ asset('/bundles/itesacbackend/images/ac_vector.png') | imagine_filter('mini_ac') }}"/>
+    </div>
+    <div class="row record_actions">
+        <div class="btn-group col-xs-8 col-sm-8 col-md-8">
+                <a href="{{ path('ac') }}" class="btn btn-default" role="button">
+                    Back to the list
+                </a>
+                <a href="{{ path('ac_edit', { 'id': entity.id }) }}" class="btn btn-default" role="button">
+                    Edit
+                </a>
         </div>
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('ac') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('ac_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+        <div class="col-xs-4 col-sm-4 col-md-4">
+                {{ form(delete_form) }}
+        </div>
+    </div>
 {% endblock %}

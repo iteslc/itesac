@@ -1,22 +1,17 @@
-{% extends '::base.html.twig' %}
-
-{% block body -%}
-    <h1>Planta edit</h1>
-
+{% extends 'ItesACBackendBundle::layout.html.twig' %}
+{% block encabezado %}Editar Planta{% endblock %}
+{% block cuerpo %}
+<div class="col-xs-12 col-sm-6 col-md-6">
     {{ form(edit_form) }}
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('planta') }}">
+</div>
+<div class="record_actions" style="padding:25px;">
+	<div class="col-xs-5 col-sm-4 col-md-3">
+        <a href="{{ path('planta') }}" class="btn btn-default" role="button">
             Back to the list
         </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
-{% endblock %}
-{% block javascripts %}
-    {{ parent() }}
-    {% javascripts '@ItesACBackendBundle/Resources/public/js/dependedSelect.js' %}
-        <script type="text/javascript" src="{{ asset_url }}"></script>
-    {% endjavascripts %}
+    </div>
+    <div class="col-xs-3 col-sm-2 col-md-3">
+    	{{ form(delete_form) }}
+    </div>
+</div>
 {% endblock %}
