@@ -23,6 +23,11 @@
             </tr>
         </tbody>
     </table>
+        <div id="ac_position" 
+             style="border: 2px solid black; width: 900px; height: 400px; background-size: cover; background-image: url('/Geekly%20Development%20House/ItesAC/web/{{vich_uploader_asset(entity.planta, 'image')}}'); ">
+            <img style="position: relative;left:{{entity.posicionX}}px;top:{{entity.posicionY}}px;"
+            src="{{ asset('/bundles/itesacbackend/images/ac_vector.png') | imagine_filter('mini_ac') }}"/>
+        </div>
 
         <ul class="record_actions">
     <li>

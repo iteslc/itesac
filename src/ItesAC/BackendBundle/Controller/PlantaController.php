@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use ItesAC\BackendBundle\Entity\Planta;
 use ItesAC\BackendBundle\Form\PlantaType;
 
@@ -243,5 +244,23 @@ class PlantaController extends Controller
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
         ;
+    }
+    /**
+     * get an image of the respective plant.
+     *
+     * @Route("/image/{id}", name="planta_image")
+     * @ParamConverter("planta", class="ItesACBackendBundle:Planta")
+     * @Method("GET")
+     * @Template()
+     */
+    public function imageAction(Request $request,Planta $planta)
+    {
+        if(!$request->isXmlHttpRequest()){
+            throw $this->createNotFoundException();
+        }
+        
+        return array(
+            'planta' => $planta,
+        );
     }
 }

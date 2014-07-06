@@ -12,10 +12,19 @@
         </a>
     </li>
 </ul>
+        <div id="ac_position" 
+             style="border: 2px solid black; width: 900px; height: 400px; background-size: cover;">
+            <img src="{{ asset('/bundles/itesacbackend/images/ac_vector.png') | 
+                                imagine_filter('mini_ac') }}" 
+            id="actarget"/>
+        </div>
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
-    {% javascripts '@ItesACBackendBundle/Resources/public/js/dependedSelect.js' %}
+    {% javascripts 
+        '@ItesACBackendBundle/Resources/public/js/dependedSelect.js' 
+        '@ItesACBackendBundle/Resources/public/js/ACPosition.js'
+        '@ItesACBackendBundle/Resources/public/js/dependedImage.js' %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
 {% endblock %}

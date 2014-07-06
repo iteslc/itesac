@@ -67,7 +67,7 @@ class Planta
      *     maxSizeMessage="El limite de carga es de 1M",
      *     mimeTypesMessage="Debe ser una imagen png"
      * )
-     * @Vich\UploadableField(mapping="modelos_image", fileNameProperty="imageName")
+     * @Vich\UploadableField(mapping="plantas_image", fileNameProperty="imageName")
      */
     private $image;
 

@@ -13,10 +13,19 @@
     </li>
     <li>{{ form(delete_form) }}</li>
 </ul>
+        <div id="ac_position" 
+             style="border: 2px solid black; width: 900px; height: 400px; background-size: cover; background-image: url('/Geekly%20Development%20House/ItesAC/web/{{vich_uploader_asset(entity.planta, 'image')}}'); ">
+            <img style="position: relative;left:{{entity.posicionX}}px;top:{{entity.posicionY}}px;"
+            src="{{ asset('/bundles/itesacbackend/images/ac_vector.png') | imagine_filter('mini_ac') }}" 
+            id="actarget"/>
+        </div>
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
-    {% javascripts '@ItesACBackendBundle/Resources/public/js/dependedSelect.js' %}
+    {% javascripts 
+        '@ItesACBackendBundle/Resources/public/js/dependedSelect.js' 
+        '@ItesACBackendBundle/Resources/public/js/ACPosition.js'
+        '@ItesACBackendBundle/Resources/public/js/dependedImage.js' %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
 {% endblock %}

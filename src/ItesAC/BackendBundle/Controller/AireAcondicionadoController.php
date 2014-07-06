@@ -45,7 +45,7 @@ class AireAcondicionadoController extends Controller
     public function createAction(Request $request)
     {
         $entity = new AireAcondicionado();
-        $form = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity,$request->isXmlHttpRequest());
         $form->handleRequest($request);
 
         if ($form->isValid()) {
@@ -69,11 +69,12 @@ class AireAcondicionadoController extends Controller
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createCreateForm(AireAcondicionado $entity)
+    private function createCreateForm(AireAcondicionado $entity, $isAjax)
     {
         $form = $this->createForm(new AireAcondicionadoType(), $entity, array(
             'action' => $this->generateUrl('ac_create'),
             'method' => 'POST',
+            'ajax'  => $isAjax,
         ));
 
         $form->add('submit', 'submit', array('label' => 'Create'));
@@ -91,7 +92,7 @@ class AireAcondicionadoController extends Controller
     public function newAction()
     {
         $entity = new AireAcondicionado();
-        $form   = $this->createCreateForm($entity);
+        $form   = $this->createCreateForm($entity,false);
 
         return array(
             'entity' => $entity,
@@ -141,7 +142,7 @@ class AireAcondicionadoController extends Controller
             throw $this->createNotFoundException('Unable to find AireAcondicionado entity.');
         }
 
-        $editForm = $this->createEditForm($entity);
+        $editForm = $this->createEditForm($entity,false);
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
@@ -158,11 +159,12 @@ class AireAcondicionadoController extends Controller
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditForm(AireAcondicionado $entity)
+    private function createEditForm(AireAcondicionado $entity, $isAjax)
     {
         $form = $this->createForm(new AireAcondicionadoType(), $entity, array(
             'action' => $this->generateUrl('ac_update', array('id' => $entity->getId())),
             'method' => 'PUT',
+            'ajax' => $isAjax,
         ));
 
         $form->add('submit', 'submit', array('label' => 'Update'));
@@ -187,7 +189,7 @@ class AireAcondicionadoController extends Controller
         }
 
         $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createEditForm($entity);
+        $editForm = $this->createEditForm($entity,$request->isXmlHttpRequest());
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {

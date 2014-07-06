@@ -224,6 +224,9 @@ class AireAcondicionado
      */
     public function setArduino(\ItesAC\BackendBundle\Entity\Arduino $arduino = null)
     {
+        if($arduino){
+            $arduino->addAire($this);
+        }
         $this->arduino = $arduino;
 
         return $this;
@@ -296,7 +299,11 @@ class AireAcondicionado
      */
     public function isEdificioYArduinoCongruente()
     {
-        if ($this->edificio===$this->arduino->getEdificio()||$this->arduino->getEdificio()===null) {
+        if($this->arduino===null){
+            return true;
+        }
+        if ($this->edificio===$this->arduino->getEdificio()||
+                $this->arduino->getEdificio()===null) {
             return true;
         } else {
             return false;

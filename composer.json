@@ -47,7 +47,7 @@
         "vich/uploader-bundle": "dev-master",
         "knplabs/gaufrette" : "0.2.*@dev",
         "knplabs/knp-gaufrette-bundle" : "dev-master",
-        "twitter/bootstrap": "v3.0.0",
+        "twbs/bootstrap": "3.0.*",
         "leafo/lessphp": "0.4.0",
         "jquery/jquery":  "1.10.*",
         "braincrafted/bootstrap-bundle": "~2.0",

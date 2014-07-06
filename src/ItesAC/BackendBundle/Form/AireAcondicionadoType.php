@@ -42,6 +42,7 @@ class AireAcondicionadoType extends AbstractType
                 'class' => 'ItesACBackendBundle:Arduino',
                 'property' => 'ip',
                 'empty_value' => 'Seleccione la ip del arduino',
+                'by_reference' => true,
                 'attr' => array('class' => 'changer', 'data-target' => '#aireacondicionado_pin'),
             ))
         ;
@@ -98,9 +99,11 @@ class AireAcondicionadoType extends AbstractType
                 $formModifierByArduino($event->getForm()->getParent(), $arduino, $event->getForm()->getParent()->getData());
             }
         );
-        $builder->addEventListener(FormEvents::POST_SUBMIT, function ($event) {
-            $event->stopPropagation();
-        }, 900);
+        if($options['ajax']){
+            $builder->addEventListener(FormEvents::POST_SUBMIT, function ($event) {
+                $event->stopPropagation();
+            }, 900);
+        }
     }
 
     /**
@@ -109,7 +112,8 @@ class AireAcondicionadoType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'ItesAC\BackendBundle\Entity\AireAcondicionado'
+            'data_class' => 'ItesAC\BackendBundle\Entity\AireAcondicionado',
+            'ajax' => false,
         ));
     }
 

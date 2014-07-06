@@ -96,11 +96,11 @@ vich_uploader:
     storage:   vich_uploader.storage.gaufrette
     mappings:
         modelos_image:
-            uri_prefix:         /images/modelos
+            uri_prefix:         images/modelos
             upload_destination: modelos_image_fs
             namer:              vich_uploader.namer_uniqid
         plantas_image:
-            uri_prefix:         /images/plantas
+            uri_prefix:         images/plantas
             upload_destination: plantas_image_fs
             namer:              vich_uploader.namer_uniqid
 
@@ -118,3 +118,12 @@ braincrafted_bootstrap:
         variables_file: ~
         bootstrap_output: %kernel.root_dir%/Resources/less/bootstrap.less
         bootstrap_template: BraincraftedBootstrapBundle:Bootstrap:bootstrap.less.twig
+
+liip_imagine:
+    resolvers:
+       default:
+          web_path: ~
+    filter_sets:
+        mini_ac:
+            filters:
+                thumbnail: { size: [32, 20], mode: inset }
