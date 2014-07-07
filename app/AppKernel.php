@@ -22,6 +22,7 @@ class AppKernel extends Kernel
             new ItesAC\BackendBundle\ItesACBackendBundle(),
             new Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle(),
             new Liip\ImagineBundle\LiipImagineBundle(),
+            new ItesAC\ControlBundle\ItesACControlBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

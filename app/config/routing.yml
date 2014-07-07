@@ -1,7 +1,12 @@
+ites_ac_control:
+    resource: "@ItesACControlBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 ites_ac_backend:
     resource: "@ItesACBackendBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /backend
     
 _liip_imagine:
     resource: "@LiipImagineBundle/Resources/config/routing.xml"
