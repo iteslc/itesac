@@ -8,7 +8,7 @@
 	<title>File src/ItesAC/BackendBundle/Entity/AireAcondicionado.php | ItesAC</title>
 
 	<script type="text/javascript" src="resources/combined.js?3612703374"></script>
-	<script type="text/javascript" src="elementlist.js?1449642761"></script>
+	<script type="text/javascript" src="elementlist.js?76307331"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -33,6 +33,8 @@
 				<li class="active"><a href="namespace-ItesAC.BackendBundle.Entity.html">Entity</a>
 						</li>
 				<li><a href="namespace-ItesAC.BackendBundle.Form.html">Form</a>
+						</li>
+				<li><a href="namespace-ItesAC.BackendBundle.Menu.html">Menu</a>
 						</li>
 				<li><a href="namespace-ItesAC.BackendBundle.Tests.html">Tests<span></span></a>
 						<ul>
@@ -174,7 +176,7 @@
 </span></span><span id="77" class="l"><a class="l" href="#77"> 77: </a><span class="php-comment">     *      message=&quot;Seleccione un modelo&quot;
 </span></span><span id="78" class="l"><a class="l" href="#78"> 78: </a><span class="php-comment">     * )
 </span></span><span id="79" class="l"><a class="l" href="#79"> 79: </a><span class="php-comment">     * @ORM\ManyToOne(targetEntity=&quot;Modelo&quot;)
-</span></span><span id="80" class="l"><a class="l" href="#80"> 80: </a><span class="php-comment">     * @ORM\JoinColumn(name=&quot;modelo_id&quot;, referencedColumnName=&quot;id&quot;)
+</span></span><span id="80" class="l"><a class="l" href="#80"> 80: </a><span class="php-comment">     * @ORM\JoinColumn(name=&quot;modelo_id&quot;, referencedColumnName=&quot;id&quot;, onDelete=&quot;CASCADE&quot;)
 </span></span><span id="81" class="l"><a class="l" href="#81"> 81: </a><span class="php-comment">     */</span>
 </span><span id="82" class="l"><a class="l" href="#82"> 82: </a>    <span class="php-keyword1">private</span> <span class="php-var"><a id="$modelo" href="#$modelo">$modelo</a></span>;
 </span><span id="83" class="l"><a class="l" href="#83"> 83: </a>
@@ -185,7 +187,7 @@
 </span></span><span id="88" class="l"><a class="l" href="#88"> 88: </a><span class="php-comment">     *      message=&quot;Seleccione un arduino&quot;
 </span></span><span id="89" class="l"><a class="l" href="#89"> 89: </a><span class="php-comment">     * )
 </span></span><span id="90" class="l"><a class="l" href="#90"> 90: </a><span class="php-comment">     * @ORM\ManyToOne(targetEntity=&quot;Arduino&quot;, inversedBy=&quot;aires&quot;)
-</span></span><span id="91" class="l"><a class="l" href="#91"> 91: </a><span class="php-comment">     * @ORM\JoinColumn(name=&quot;arduino_id&quot;, referencedColumnName=&quot;id&quot;)
+</span></span><span id="91" class="l"><a class="l" href="#91"> 91: </a><span class="php-comment">     * @ORM\JoinColumn(name=&quot;arduino_id&quot;, referencedColumnName=&quot;id&quot;, onDelete=&quot;CASCADE&quot;)
 </span></span><span id="92" class="l"><a class="l" href="#92"> 92: </a><span class="php-comment">     */</span>
 </span><span id="93" class="l"><a class="l" href="#93"> 93: </a>    <span class="php-keyword1">private</span> <span class="php-var"><a id="$arduino" href="#$arduino">$arduino</a></span>;
 </span><span id="94" class="l"><a class="l" href="#94"> 94: </a>
@@ -196,7 +198,7 @@
 </span></span><span id="99" class="l"><a class="l" href="#99"> 99: </a><span class="php-comment">     *      message=&quot;Seleccione una planta&quot;
 </span></span><span id="100" class="l"><a class="l" href="#100">100: </a><span class="php-comment">     * )
 </span></span><span id="101" class="l"><a class="l" href="#101">101: </a><span class="php-comment">     * @ORM\ManyToOne(targetEntity=&quot;Planta&quot;, inversedBy=&quot;aires&quot;)
-</span></span><span id="102" class="l"><a class="l" href="#102">102: </a><span class="php-comment">     * @ORM\JoinColumn(name=&quot;planta_id&quot;, referencedColumnName=&quot;id&quot;)
+</span></span><span id="102" class="l"><a class="l" href="#102">102: </a><span class="php-comment">     * @ORM\JoinColumn(name=&quot;planta_id&quot;, referencedColumnName=&quot;id&quot;, onDelete=&quot;CASCADE&quot;)
 </span></span><span id="103" class="l"><a class="l" href="#103">103: </a><span class="php-comment">     */</span>
 </span><span id="104" class="l"><a class="l" href="#104">104: </a>    <span class="php-keyword1">private</span> <span class="php-var"><a id="$planta" href="#$planta">$planta</a></span>;
 </span><span id="105" class="l"><a class="l" href="#105">105: </a>
@@ -207,7 +209,7 @@
 </span></span><span id="110" class="l"><a class="l" href="#110">110: </a><span class="php-comment">     *      message=&quot;Seleccione un edificio&quot;
 </span></span><span id="111" class="l"><a class="l" href="#111">111: </a><span class="php-comment">     * )
 </span></span><span id="112" class="l"><a class="l" href="#112">112: </a><span class="php-comment">     * @ORM\ManyToOne(targetEntity=&quot;Edificio&quot;, inversedBy=&quot;aires&quot;)
-</span></span><span id="113" class="l"><a class="l" href="#113">113: </a><span class="php-comment">     * @ORM\JoinColumn(name=&quot;edificio_id&quot;, referencedColumnName=&quot;id&quot;)
+</span></span><span id="113" class="l"><a class="l" href="#113">113: </a><span class="php-comment">     * @ORM\JoinColumn(name=&quot;edificio_id&quot;, referencedColumnName=&quot;id&quot;, onDelete=&quot;CASCADE&quot;)
 </span></span><span id="114" class="l"><a class="l" href="#114">114: </a><span class="php-comment">     */</span>
 </span><span id="115" class="l"><a class="l" href="#115">115: </a>    <span class="php-keyword1">private</span> <span class="php-var"><a id="$edificio" href="#$edificio">$edificio</a></span>;
 </span><span id="116" class="l"><a class="l" href="#116">116: </a>
@@ -321,86 +323,93 @@
 </span></span><span id="224" class="l"><a class="l" href="#224">224: </a><span class="php-comment">     */</span>
 </span><span id="225" class="l"><a class="l" href="#225">225: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_setArduino" href="#_setArduino">setArduino</a>(\ItesAC\BackendBundle\Entity\Arduino <span class="php-var">$arduino</span> = <span class="php-keyword1">null</span>)
 </span><span id="226" class="l"><a class="l" href="#226">226: </a>    {
-</span><span id="227" class="l"><a class="l" href="#227">227: </a>        <span class="php-var">$this</span>-&gt;arduino = <span class="php-var">$arduino</span>;
-</span><span id="228" class="l"><a class="l" href="#228">228: </a>
-</span><span id="229" class="l"><a class="l" href="#229">229: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>;
-</span><span id="230" class="l"><a class="l" href="#230">230: </a>    }
+</span><span id="227" class="l"><a class="l" href="#227">227: </a>        <span class="php-keyword1">if</span>(<span class="php-var">$arduino</span>){
+</span><span id="228" class="l"><a class="l" href="#228">228: </a>            <span class="php-var">$arduino</span>-&gt;addAire(<span class="php-var">$this</span>);
+</span><span id="229" class="l"><a class="l" href="#229">229: </a>        }
+</span><span id="230" class="l"><a class="l" href="#230">230: </a>        <span class="php-var">$this</span>-&gt;arduino = <span class="php-var">$arduino</span>;
 </span><span id="231" class="l"><a class="l" href="#231">231: </a>
-</span><span id="232" class="l"><a class="l" href="#232">232: </a>    <span class="php-comment">/**
-</span></span><span id="233" class="l"><a class="l" href="#233">233: </a><span class="php-comment">     * Get arduino
-</span></span><span id="234" class="l"><a class="l" href="#234">234: </a><span class="php-comment">     *
-</span></span><span id="235" class="l"><a class="l" href="#235">235: </a><span class="php-comment">     * @return \ItesAC\BackendBundle\Entity\Arduino
-</span></span><span id="236" class="l"><a class="l" href="#236">236: </a><span class="php-comment">     */</span>
-</span><span id="237" class="l"><a class="l" href="#237">237: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_getArduino" href="#_getArduino">getArduino</a>()
-</span><span id="238" class="l"><a class="l" href="#238">238: </a>    {
-</span><span id="239" class="l"><a class="l" href="#239">239: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;arduino;
-</span><span id="240" class="l"><a class="l" href="#240">240: </a>    }
-</span><span id="241" class="l"><a class="l" href="#241">241: </a>
-</span><span id="242" class="l"><a class="l" href="#242">242: </a>    <span class="php-comment">/**
-</span></span><span id="243" class="l"><a class="l" href="#243">243: </a><span class="php-comment">     * Set planta
-</span></span><span id="244" class="l"><a class="l" href="#244">244: </a><span class="php-comment">     *
-</span></span><span id="245" class="l"><a class="l" href="#245">245: </a><span class="php-comment">     * @param  \ItesAC\BackendBundle\Entity\Planta $planta
-</span></span><span id="246" class="l"><a class="l" href="#246">246: </a><span class="php-comment">     * @return AireAcondicionado
-</span></span><span id="247" class="l"><a class="l" href="#247">247: </a><span class="php-comment">     */</span>
-</span><span id="248" class="l"><a class="l" href="#248">248: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_setPlanta" href="#_setPlanta">setPlanta</a>(\ItesAC\BackendBundle\Entity\Planta <span class="php-var">$planta</span> = <span class="php-keyword1">null</span>)
-</span><span id="249" class="l"><a class="l" href="#249">249: </a>    {
-</span><span id="250" class="l"><a class="l" href="#250">250: </a>        <span class="php-var">$this</span>-&gt;planta = <span class="php-var">$planta</span>;
-</span><span id="251" class="l"><a class="l" href="#251">251: </a>
-</span><span id="252" class="l"><a class="l" href="#252">252: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>;
-</span><span id="253" class="l"><a class="l" href="#253">253: </a>    }
+</span><span id="232" class="l"><a class="l" href="#232">232: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>;
+</span><span id="233" class="l"><a class="l" href="#233">233: </a>    }
+</span><span id="234" class="l"><a class="l" href="#234">234: </a>
+</span><span id="235" class="l"><a class="l" href="#235">235: </a>    <span class="php-comment">/**
+</span></span><span id="236" class="l"><a class="l" href="#236">236: </a><span class="php-comment">     * Get arduino
+</span></span><span id="237" class="l"><a class="l" href="#237">237: </a><span class="php-comment">     *
+</span></span><span id="238" class="l"><a class="l" href="#238">238: </a><span class="php-comment">     * @return \ItesAC\BackendBundle\Entity\Arduino
+</span></span><span id="239" class="l"><a class="l" href="#239">239: </a><span class="php-comment">     */</span>
+</span><span id="240" class="l"><a class="l" href="#240">240: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_getArduino" href="#_getArduino">getArduino</a>()
+</span><span id="241" class="l"><a class="l" href="#241">241: </a>    {
+</span><span id="242" class="l"><a class="l" href="#242">242: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;arduino;
+</span><span id="243" class="l"><a class="l" href="#243">243: </a>    }
+</span><span id="244" class="l"><a class="l" href="#244">244: </a>
+</span><span id="245" class="l"><a class="l" href="#245">245: </a>    <span class="php-comment">/**
+</span></span><span id="246" class="l"><a class="l" href="#246">246: </a><span class="php-comment">     * Set planta
+</span></span><span id="247" class="l"><a class="l" href="#247">247: </a><span class="php-comment">     *
+</span></span><span id="248" class="l"><a class="l" href="#248">248: </a><span class="php-comment">     * @param  \ItesAC\BackendBundle\Entity\Planta $planta
+</span></span><span id="249" class="l"><a class="l" href="#249">249: </a><span class="php-comment">     * @return AireAcondicionado
+</span></span><span id="250" class="l"><a class="l" href="#250">250: </a><span class="php-comment">     */</span>
+</span><span id="251" class="l"><a class="l" href="#251">251: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_setPlanta" href="#_setPlanta">setPlanta</a>(\ItesAC\BackendBundle\Entity\Planta <span class="php-var">$planta</span> = <span class="php-keyword1">null</span>)
+</span><span id="252" class="l"><a class="l" href="#252">252: </a>    {
+</span><span id="253" class="l"><a class="l" href="#253">253: </a>        <span class="php-var">$this</span>-&gt;planta = <span class="php-var">$planta</span>;
 </span><span id="254" class="l"><a class="l" href="#254">254: </a>
-</span><span id="255" class="l"><a class="l" href="#255">255: </a>    <span class="php-comment">/**
-</span></span><span id="256" class="l"><a class="l" href="#256">256: </a><span class="php-comment">     * Get planta
-</span></span><span id="257" class="l"><a class="l" href="#257">257: </a><span class="php-comment">     *
-</span></span><span id="258" class="l"><a class="l" href="#258">258: </a><span class="php-comment">     * @return \ItesAC\BackendBundle\Entity\Planta
-</span></span><span id="259" class="l"><a class="l" href="#259">259: </a><span class="php-comment">     */</span>
-</span><span id="260" class="l"><a class="l" href="#260">260: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_getPlanta" href="#_getPlanta">getPlanta</a>()
-</span><span id="261" class="l"><a class="l" href="#261">261: </a>    {
-</span><span id="262" class="l"><a class="l" href="#262">262: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;planta;
-</span><span id="263" class="l"><a class="l" href="#263">263: </a>    }
-</span><span id="264" class="l"><a class="l" href="#264">264: </a>
-</span><span id="265" class="l"><a class="l" href="#265">265: </a>    <span class="php-comment">/**
-</span></span><span id="266" class="l"><a class="l" href="#266">266: </a><span class="php-comment">     * Set edificio
-</span></span><span id="267" class="l"><a class="l" href="#267">267: </a><span class="php-comment">     *
-</span></span><span id="268" class="l"><a class="l" href="#268">268: </a><span class="php-comment">     * @param  \ItesAC\BackendBundle\Entity\Edificio $edificio
-</span></span><span id="269" class="l"><a class="l" href="#269">269: </a><span class="php-comment">     * @return AireAcondicionado
-</span></span><span id="270" class="l"><a class="l" href="#270">270: </a><span class="php-comment">     */</span>
-</span><span id="271" class="l"><a class="l" href="#271">271: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_setEdificio" href="#_setEdificio">setEdificio</a>(\ItesAC\BackendBundle\Entity\Edificio <span class="php-var">$edificio</span> = <span class="php-keyword1">null</span>)
-</span><span id="272" class="l"><a class="l" href="#272">272: </a>    {
-</span><span id="273" class="l"><a class="l" href="#273">273: </a>        <span class="php-var">$this</span>-&gt;edificio = <span class="php-var">$edificio</span>;
-</span><span id="274" class="l"><a class="l" href="#274">274: </a>
-</span><span id="275" class="l"><a class="l" href="#275">275: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>;
-</span><span id="276" class="l"><a class="l" href="#276">276: </a>    }
+</span><span id="255" class="l"><a class="l" href="#255">255: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>;
+</span><span id="256" class="l"><a class="l" href="#256">256: </a>    }
+</span><span id="257" class="l"><a class="l" href="#257">257: </a>
+</span><span id="258" class="l"><a class="l" href="#258">258: </a>    <span class="php-comment">/**
+</span></span><span id="259" class="l"><a class="l" href="#259">259: </a><span class="php-comment">     * Get planta
+</span></span><span id="260" class="l"><a class="l" href="#260">260: </a><span class="php-comment">     *
+</span></span><span id="261" class="l"><a class="l" href="#261">261: </a><span class="php-comment">     * @return \ItesAC\BackendBundle\Entity\Planta
+</span></span><span id="262" class="l"><a class="l" href="#262">262: </a><span class="php-comment">     */</span>
+</span><span id="263" class="l"><a class="l" href="#263">263: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_getPlanta" href="#_getPlanta">getPlanta</a>()
+</span><span id="264" class="l"><a class="l" href="#264">264: </a>    {
+</span><span id="265" class="l"><a class="l" href="#265">265: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;planta;
+</span><span id="266" class="l"><a class="l" href="#266">266: </a>    }
+</span><span id="267" class="l"><a class="l" href="#267">267: </a>
+</span><span id="268" class="l"><a class="l" href="#268">268: </a>    <span class="php-comment">/**
+</span></span><span id="269" class="l"><a class="l" href="#269">269: </a><span class="php-comment">     * Set edificio
+</span></span><span id="270" class="l"><a class="l" href="#270">270: </a><span class="php-comment">     *
+</span></span><span id="271" class="l"><a class="l" href="#271">271: </a><span class="php-comment">     * @param  \ItesAC\BackendBundle\Entity\Edificio $edificio
+</span></span><span id="272" class="l"><a class="l" href="#272">272: </a><span class="php-comment">     * @return AireAcondicionado
+</span></span><span id="273" class="l"><a class="l" href="#273">273: </a><span class="php-comment">     */</span>
+</span><span id="274" class="l"><a class="l" href="#274">274: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_setEdificio" href="#_setEdificio">setEdificio</a>(\ItesAC\BackendBundle\Entity\Edificio <span class="php-var">$edificio</span> = <span class="php-keyword1">null</span>)
+</span><span id="275" class="l"><a class="l" href="#275">275: </a>    {
+</span><span id="276" class="l"><a class="l" href="#276">276: </a>        <span class="php-var">$this</span>-&gt;edificio = <span class="php-var">$edificio</span>;
 </span><span id="277" class="l"><a class="l" href="#277">277: </a>
-</span><span id="278" class="l"><a class="l" href="#278">278: </a>    <span class="php-comment">/**
-</span></span><span id="279" class="l"><a class="l" href="#279">279: </a><span class="php-comment">     * Get edificio
-</span></span><span id="280" class="l"><a class="l" href="#280">280: </a><span class="php-comment">     *
-</span></span><span id="281" class="l"><a class="l" href="#281">281: </a><span class="php-comment">     * @return \ItesAC\BackendBundle\Entity\Edificio
-</span></span><span id="282" class="l"><a class="l" href="#282">282: </a><span class="php-comment">     */</span>
-</span><span id="283" class="l"><a class="l" href="#283">283: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_getEdificio" href="#_getEdificio">getEdificio</a>()
-</span><span id="284" class="l"><a class="l" href="#284">284: </a>    {
-</span><span id="285" class="l"><a class="l" href="#285">285: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;edificio;
-</span><span id="286" class="l"><a class="l" href="#286">286: </a>    }
-</span><span id="287" class="l"><a class="l" href="#287">287: </a>
-</span><span id="288" class="l"><a class="l" href="#288">288: </a>    <span class="php-comment">/**
-</span></span><span id="289" class="l"><a class="l" href="#289">289: </a><span class="php-comment">     * is Congruente el edificio con el arduino
-</span></span><span id="290" class="l"><a class="l" href="#290">290: </a><span class="php-comment">     *
-</span></span><span id="291" class="l"><a class="l" href="#291">291: </a><span class="php-comment">     * @return boolean
-</span></span><span id="292" class="l"><a class="l" href="#292">292: </a><span class="php-comment">     *
-</span></span><span id="293" class="l"><a class="l" href="#293">293: </a><span class="php-comment">     * @Assert\True(
-</span></span><span id="294" class="l"><a class="l" href="#294">294: </a><span class="php-comment">     *  message=&quot;El arduino no es valido para ese edificio&quot;
-</span></span><span id="295" class="l"><a class="l" href="#295">295: </a><span class="php-comment">     * )
-</span></span><span id="296" class="l"><a class="l" href="#296">296: </a><span class="php-comment">     */</span>
-</span><span id="297" class="l"><a class="l" href="#297">297: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_isEdificioYArduinoCongruente" href="#_isEdificioYArduinoCongruente">isEdificioYArduinoCongruente</a>()
-</span><span id="298" class="l"><a class="l" href="#298">298: </a>    {
-</span><span id="299" class="l"><a class="l" href="#299">299: </a>        <span class="php-keyword1">if</span> (<span class="php-var">$this</span>-&gt;edificio===<span class="php-var">$this</span>-&gt;arduino-&gt;getEdificio()||<span class="php-var">$this</span>-&gt;arduino-&gt;getEdificio()===<span class="php-keyword1">null</span>) {
-</span><span id="300" class="l"><a class="l" href="#300">300: </a>            <span class="php-keyword1">return</span> <span class="php-keyword1">true</span>;
-</span><span id="301" class="l"><a class="l" href="#301">301: </a>        } <span class="php-keyword1">else</span> {
-</span><span id="302" class="l"><a class="l" href="#302">302: </a>            <span class="php-keyword1">return</span> <span class="php-keyword1">false</span>;
-</span><span id="303" class="l"><a class="l" href="#303">303: </a>        }
-</span><span id="304" class="l"><a class="l" href="#304">304: </a>    }
-</span><span id="305" class="l"><a class="l" href="#305">305: </a>}
-</span><span id="306" class="l"><a class="l" href="#306">306: </a></span></code></pre>
+</span><span id="278" class="l"><a class="l" href="#278">278: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>;
+</span><span id="279" class="l"><a class="l" href="#279">279: </a>    }
+</span><span id="280" class="l"><a class="l" href="#280">280: </a>
+</span><span id="281" class="l"><a class="l" href="#281">281: </a>    <span class="php-comment">/**
+</span></span><span id="282" class="l"><a class="l" href="#282">282: </a><span class="php-comment">     * Get edificio
+</span></span><span id="283" class="l"><a class="l" href="#283">283: </a><span class="php-comment">     *
+</span></span><span id="284" class="l"><a class="l" href="#284">284: </a><span class="php-comment">     * @return \ItesAC\BackendBundle\Entity\Edificio
+</span></span><span id="285" class="l"><a class="l" href="#285">285: </a><span class="php-comment">     */</span>
+</span><span id="286" class="l"><a class="l" href="#286">286: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_getEdificio" href="#_getEdificio">getEdificio</a>()
+</span><span id="287" class="l"><a class="l" href="#287">287: </a>    {
+</span><span id="288" class="l"><a class="l" href="#288">288: </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;edificio;
+</span><span id="289" class="l"><a class="l" href="#289">289: </a>    }
+</span><span id="290" class="l"><a class="l" href="#290">290: </a>
+</span><span id="291" class="l"><a class="l" href="#291">291: </a>    <span class="php-comment">/**
+</span></span><span id="292" class="l"><a class="l" href="#292">292: </a><span class="php-comment">     * is Congruente el edificio con el arduino
+</span></span><span id="293" class="l"><a class="l" href="#293">293: </a><span class="php-comment">     *
+</span></span><span id="294" class="l"><a class="l" href="#294">294: </a><span class="php-comment">     * @return boolean
+</span></span><span id="295" class="l"><a class="l" href="#295">295: </a><span class="php-comment">     *
+</span></span><span id="296" class="l"><a class="l" href="#296">296: </a><span class="php-comment">     * @Assert\True(
+</span></span><span id="297" class="l"><a class="l" href="#297">297: </a><span class="php-comment">     *  message=&quot;El arduino no es valido para ese edificio&quot;
+</span></span><span id="298" class="l"><a class="l" href="#298">298: </a><span class="php-comment">     * )
+</span></span><span id="299" class="l"><a class="l" href="#299">299: </a><span class="php-comment">     */</span>
+</span><span id="300" class="l"><a class="l" href="#300">300: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_isEdificioYArduinoCongruente" href="#_isEdificioYArduinoCongruente">isEdificioYArduinoCongruente</a>()
+</span><span id="301" class="l"><a class="l" href="#301">301: </a>    {
+</span><span id="302" class="l"><a class="l" href="#302">302: </a>        <span class="php-keyword1">if</span>(<span class="php-var">$this</span>-&gt;arduino===<span class="php-keyword1">null</span>){
+</span><span id="303" class="l"><a class="l" href="#303">303: </a>            <span class="php-keyword1">return</span> <span class="php-keyword1">true</span>;
+</span><span id="304" class="l"><a class="l" href="#304">304: </a>        }
+</span><span id="305" class="l"><a class="l" href="#305">305: </a>        <span class="php-keyword1">if</span> (<span class="php-var">$this</span>-&gt;edificio===<span class="php-var">$this</span>-&gt;arduino-&gt;getEdificio()||
+</span><span id="306" class="l"><a class="l" href="#306">306: </a>                <span class="php-var">$this</span>-&gt;arduino-&gt;getEdificio()===<span class="php-keyword1">null</span>) {
+</span><span id="307" class="l"><a class="l" href="#307">307: </a>            <span class="php-keyword1">return</span> <span class="php-keyword1">true</span>;
+</span><span id="308" class="l"><a class="l" href="#308">308: </a>        } <span class="php-keyword1">else</span> {
+</span><span id="309" class="l"><a class="l" href="#309">309: </a>            <span class="php-keyword1">return</span> <span class="php-keyword1">false</span>;
+</span><span id="310" class="l"><a class="l" href="#310">310: </a>        }
+</span><span id="311" class="l"><a class="l" href="#311">311: </a>    }
+</span><span id="312" class="l"><a class="l" href="#312">312: </a>}
+</span><span id="313" class="l"><a class="l" href="#313">313: </a></span></code></pre>
 
 	<div id="footer">
 		ItesAC API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
