@@ -37,7 +37,7 @@ assetic:
     #java: /usr/bin/java
     filters:
         lessphp:
-             file: %kernel.root_dir%/../vendor/leafo/lessphp/lessc.inc.php
+             file: %kernel.root_dir%/../vendor/oyejorge/less.php/lessc.inc.php
              apply_to: "\.less$"
         cssrewrite: ~
 braincrafted_bootstrap:
@@ -106,7 +106,7 @@ vich_uploader:
 
 braincrafted_bootstrap:
     output_dir:
-    assets_dir: %kernel.root_dir%/../vendor/twitter/bootstrap
+    assets_dir: %kernel.root_dir%/../vendor/twbs/bootstrap
     jquery_path: %kernel.root_dir%/../vendor/jquery/jquery/jquery-1.10.2.js
     less_filter: lessphp # "less", "lessphp" or "none"
     auto_configure:

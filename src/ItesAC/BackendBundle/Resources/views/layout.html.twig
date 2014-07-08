@@ -1,9 +1,18 @@
 {% extends '::base.html.twig' %}
-
+{% block style %}
+{{ parent() }}
+<style>
+.maincontent{
+        background-color:#fff;
+	border-radius:5px;}
+</style>
+{% endblock %}
 {% block body -%}
-    <div class="row col-xs-12 col-sm-7 col-md-6" style="padding-top:15px;">
-        <div class="container">
-            <div class="panel panel-primary">
+    <div class="row col-xs-12 col-sm-7 col-md-6" style="margin-top:15px;margin-left: 15px;">
+            <div class="maincontent">
+            {{ knp_menu_render('ItesACBackendBundle:Builder:backendMenu', { 'currentClass': 'active','template': 'ItesACBackendBundle::knp_menu.html.twig' }) }}
+            </div>
+            <div class="panel panel-default">
                 <!-- Default panel contents -->
                 <div class="panel-heading">{% block encabezado %}{% endblock %}</div>
                 <!-- Table -->
@@ -11,6 +20,5 @@
                     {% block cuerpo %}{% endblock %}
                 </div>
             </div>
-        </div>
     </div>
 {% endblock %}

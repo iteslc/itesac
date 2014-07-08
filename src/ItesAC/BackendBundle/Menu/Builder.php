@@ -3,18 +3,19 @@
 namespace ItesAC\BackendBundle\Menu;
 
 use Knp\Menu\FactoryInterface;
-
+use Symfony\Component\DependencyInjection\ContainerAware;
 /**
  * Description of Builder
  *
  * @author Dany Cast
  */
-class Builder {
+class Builder extends ContainerAware{
 
     public function backendMenu(FactoryInterface $factory, array $options) {
         $menu = $factory->createItem('root');
-        
-        $menu->addChild('Aire Acondicionado', array('route' => 'ac'));
+        $menu->setChildrenAttribute('class', 'nav nav-pills nav-justified');
+
+        $menu->addChild('AC', array('route' => 'ac'));
         $menu->addChild('Planta', array('route' => 'planta'));
         $menu->addChild('Edificio', array('route' => 'edificio'));
         $menu->addChild('Arduino', array('route' => 'arduino'));

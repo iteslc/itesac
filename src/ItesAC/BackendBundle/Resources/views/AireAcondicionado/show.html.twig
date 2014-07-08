@@ -23,11 +23,6 @@
             </tbody>
         </table>
     </div>
-    <div id="ac_position" 
-             style="border: 2px solid black; width: 900px; height: 400px; background-size: cover; background-image: url('/Geekly%20Development%20House/ItesAC/web/{{vich_uploader_asset(entity.planta, 'image')}}'); ">
-            <img style="position: relative;left:{{entity.posicionX}}px;top:{{entity.posicionY}}px;"
-            src="{{ asset('/bundles/itesacbackend/images/ac_vector.png') | imagine_filter('mini_ac') }}"/>
-    </div>
     <div class="row record_actions">
         <div class="btn-group col-xs-8 col-sm-8 col-md-8">
                 <a href="{{ path('ac') }}" class="btn btn-default" role="button">
@@ -36,9 +31,28 @@
                 <a href="{{ path('ac_edit', { 'id': entity.id }) }}" class="btn btn-default" role="button">
                     Edit
                 </a>
+            <a href="ac" data-toggle="modal" data-target="#ac" class="btn btn-default" role="button">Posición AC</a>
         </div>
         <div class="col-xs-4 col-sm-4 col-md-4">
                 {{ form(delete_form) }}
         </div>
     </div>
+{% endblock %}
+{% block modal %}
+<div class="modal fade" id="ac" tabindex="-1" role="dialog" aria-labelledby="labelac" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="labelac">Posicion AC</h4>
+      </div>
+      <div class="modal-body">
+        <div id="ac_position" style="border: 2px solid black; width: 768px; height: 350px; background-size: cover; background-image: url('/Geekly%20Development%20House/ItesAC/web/{{vich_uploader_asset(entity.planta, 'image')}}'); ">
+            <img style="position: relative;left:{{entity.posicionX}}px;top:{{entity.posicionY}}px;"
+            src="{{ asset('/bundles/itesacbackend/images/ac_vector.png') | imagine_filter('mini_ac') }}"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
