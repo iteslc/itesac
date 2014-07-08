@@ -1,7 +1,8 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
     ],
     "hash": "a3d0890aebcb5acc05a474252ee81a4b",
     "packages": [
@@ -2082,16 +2083,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v2.5.0",
+            "version": "v2.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "59365832a09a1d914d14cbca6a21a7f572760c3b"
+                "reference": "e3d2844abc988bc467bb1593cd340700096b0ac0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/59365832a09a1d914d14cbca6a21a7f572760c3b",
-                "reference": "59365832a09a1d914d14cbca6a21a7f572760c3b",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/e3d2844abc988bc467bb1593cd340700096b0ac0",
+                "reference": "e3d2844abc988bc467bb1593cd340700096b0ac0",
                 "shasum": ""
             },
             "require": {
@@ -2099,7 +2100,7 @@
                 "php": ">=5.3.3",
                 "psr/log": "~1.0",
                 "symfony/icu": "~1.0",
-                "twig/twig": "~1.11"
+                "twig/twig": "~1.12"
             },
             "replace": {
                 "symfony/browser-kit": "self.version",
@@ -2194,7 +2195,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2014-05-31 18:45:50"
+            "time": "2014-07-08 14:42:08"
         },
         {
             "name": "twbs/bootstrap",
@@ -2350,12 +2351,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dustin10/VichUploaderBundle.git",
-                "reference": "9c8a1335c8cafcc7cc256848e16987cd3d88a2d5"
+                "reference": "ea5b700ade79de31951832e1601c5b25245da2e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/9c8a1335c8cafcc7cc256848e16987cd3d88a2d5",
-                "reference": "9c8a1335c8cafcc7cc256848e16987cd3d88a2d5",
+                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/ea5b700ade79de31951832e1601c5b25245da2e1",
+                "reference": "ea5b700ade79de31951832e1601c5b25245da2e1",
                 "shasum": ""
             },
             "require": {
@@ -2407,7 +2408,7 @@
                 "file uploads",
                 "upload"
             ],
-            "time": "2014-07-07 20:39:05"
+            "time": "2014-07-08 14:31:42"
         }
     ],
     "packages-dev": [
