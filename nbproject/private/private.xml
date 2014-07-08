@@ -3,12 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp/www/Geekly%20Development%20House/ItesAC/src/ItesAC/BackendBundle/Resources/public/js/dependedSelect.js</file>
-            <file>file:/C:/wamp/www/Geekly%20Development%20House/ItesAC/src/ItesAC/BackendBundle/Resources/public/js/dependedImage.js</file>
-            <file>file:/C:/wamp/www/Geekly%20Development%20House/ItesAC/app/config/config.yml</file>
-            <file>file:/C:/wamp/www/Geekly%20Development%20House/ItesAC/src/ItesAC/BackendBundle/Resources/public/js/ACPosition.js</file>
-            <file>file:/C:/wamp/www/Geekly%20Development%20House/ItesAC/composer.json</file>
-            <file>file:/C:/wamp/www/Geekly%20Development%20House/ItesAC/src/ItesAC/BackendBundle/Resources/views/AireAcondicionado/new.html.twig</file>
+            <file>file:/C:/wamp/www/ItesAC/composer.json</file>
+            <file>file:/C:/wamp/www/ItesAC/src/ItesAC/BackendBundle/Resources/views/AireAcondicionado/show.html.twig</file>
+            <file>file:/C:/wamp/www/ItesAC/src/ItesAC/BackendBundle/Resources/views/Planta/image.html.twig</file>
+            <file>file:/C:/wamp/www/ItesAC/src/ItesAC/BackendBundle/Menu/Builder.php</file>
+            <file>file:/C:/wamp/www/ItesAC/src/ItesAC/BackendBundle/Resources/views/layout.html.twig</file>
+            <file>file:/C:/wamp/www/ItesAC/src/ItesAC/BackendBundle/Resources/views/AireAcondicionado/edit.html.twig</file>
+            <file>file:/C:/wamp/www/ItesAC/app/Resources/views/base.html.twig</file>
+            <file>file:/C:/wamp/www/ItesAC/app/config/config.yml</file>
+            <file>file:/C:/wamp/www/ItesAC/src/ItesAC/BackendBundle/Resources/views/AireAcondicionado/new.html.twig</file>
         </group>
     </open-files>
 </project-private>
