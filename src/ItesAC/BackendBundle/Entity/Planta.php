@@ -31,6 +31,7 @@ class Planta
     /**
      * @var string
      *
+     * @Assert\NotNull(message="Seleccione el piso")
      * @Assert\Choice(
      *      choices={"PB","P1"},
      *      message="Seleccione el piso"

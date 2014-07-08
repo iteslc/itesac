@@ -58,9 +58,11 @@ class PlantaType extends AbstractType
                 $formModifier($event->getForm()->getParent(), $edificio, $event->getForm()->getParent()->getData());
             }
         );
-        $builder->addEventListener(FormEvents::POST_SUBMIT, function ($event) {
-            $event->stopPropagation();
-        }, 900);
+        if($options['ajax']){
+            $builder->addEventListener(FormEvents::POST_SUBMIT, function ($event) {
+                $event->stopPropagation();
+            }, 900);
+        }
     }
 
     /**
@@ -69,7 +71,8 @@ class PlantaType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'ItesAC\BackendBundle\Entity\Planta'
+            'data_class' => 'ItesAC\BackendBundle\Entity\Planta',
+            'ajax' => false,
         ));
     }
 

@@ -46,7 +46,7 @@ class PlantaController extends Controller
     public function createAction(Request $request)
     {
         $entity = new Planta();
-        $form = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity,$request->isXmlHttpRequest());
         $form->handleRequest($request);
 
         if ($form->isValid()) {
@@ -70,11 +70,12 @@ class PlantaController extends Controller
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createCreateForm(Planta $entity)
+    private function createCreateForm(Planta $entity, $isAjax)
     {
         $form = $this->createForm(new PlantaType(), $entity, array(
             'action' => $this->generateUrl('planta_create'),
             'method' => 'POST',
+            'ajax'  => $isAjax,
         ));
 
         $form->add('submit', 'submit', array('label' => 'Create'));
@@ -92,7 +93,7 @@ class PlantaController extends Controller
     public function newAction()
     {
         $entity = new Planta();
-        $form   = $this->createCreateForm($entity);
+        $form   = $this->createCreateForm($entity,false);
 
         return array(
             'entity' => $entity,
@@ -142,7 +143,7 @@ class PlantaController extends Controller
             throw $this->createNotFoundException('Unable to find Planta entity.');
         }
 
-        $editForm = $this->createEditForm($entity);
+        $editForm = $this->createEditForm($entity,false);
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
@@ -159,11 +160,12 @@ class PlantaController extends Controller
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditForm(Planta $entity)
+    private function createEditForm(Planta $entity, $isAjax)
     {
         $form = $this->createForm(new PlantaType(), $entity, array(
             'action' => $this->generateUrl('planta_update', array('id' => $entity->getId())),
             'method' => 'PUT',
+            'ajax' => $isAjax,
         ));
 
         $form->add('submit', 'submit', array('label' => 'Update'));
@@ -188,7 +190,7 @@ class PlantaController extends Controller
         }
 
         $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createEditForm($entity);
+        $editForm = $this->createEditForm($entity,$request->isXmlHttpRequest());
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
