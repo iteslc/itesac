@@ -1,0 +1,18 @@
+{% extends 'ItesACControlBundle::layout.html.twig' %}
+{% block cuerpo %}
+{% for entity in edificios %}
+<div class="col-sm-6 col-md-4 col-lg-4">
+  <div class="thumbnail">
+    <h1 class="text-center">Edificio {{ entity.nombre }}</h1>
+    <div class="caption">
+      <h3>Detalles</h3>
+      <p>AC encendidos: {{ badge('') }}</p>
+      <p>AC apagados: {{ badge('') }}</p>
+      <div class="btn-group btn-group-justified">
+          <a href="#" class="btn btn-danger" role="button">{{ icon('off') }} OFF ALL</a> <a href="#" class="btn btn-success" role="button">ON ALL</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+{% endblock %}
