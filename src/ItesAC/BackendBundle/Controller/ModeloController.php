@@ -193,7 +193,7 @@ class ModeloController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('modelo_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('modelo_show', array('id' => $id)));
         }
 
         return array(
