@@ -193,7 +193,7 @@ class ArduinoController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('arduino_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('arduino_show', array('id' => $id)));
         }
 
         return array(

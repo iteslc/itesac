@@ -1,4 +1,12 @@
 {% extends 'ItesACBackendBundle::layout.html.twig' %}
+{% block style %}
+{{ parent() }}
+<style>
+.modal-header {
+background: #428bca;
+}
+</style>
+{% endblock %}
 {% block encabezado %}Aire Acondicionado{% endblock %}
 {% block cuerpo %}
     <div class="table-responsive">
@@ -31,7 +39,7 @@
                 <a href="{{ path('ac_edit', { 'id': entity.id }) }}" class="btn btn-default" role="button">
                     Edit
                 </a>
-            <a href="ac" data-toggle="modal" data-target="#ac" class="btn btn-default" role="button">Posición AC</a>
+            <a href="ac" data-toggle="modal" data-target="#ac" class="btn btn-success" role="button">Posición AC</a>
         </div>
         <div class="col-xs-4 col-sm-4 col-md-4">
                 {{ form(delete_form) }}
@@ -44,7 +52,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="labelac">Posicion AC</h4>
+        <h4 class="modal-title" id="labelac" style="color:white;">Posicion AC</h4>
       </div>
       <div class="modal-body">
         <div id="ac_position" style="border: 2px solid black; width: 768px; height: 350px; background-size: cover; background-image: url('/Geekly%20Development%20House/ItesAC/web/{{vich_uploader_asset(entity.planta, 'image')}}'); ">
