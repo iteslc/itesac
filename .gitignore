@@ -21,3 +21,8 @@ app/config/parameters.yml
 # Composer
 composer.phar
 
+#netbeans
+nbproject/*
+!nbproject/project.properties
+!nbproject/project.xml
+
