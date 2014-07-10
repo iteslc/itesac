@@ -13,7 +13,7 @@ class Builder extends ContainerAware{
 
     public function backendMenu(FactoryInterface $factory, array $options) {
         $menu = $factory->createItem('root');
-        $menu->setChildrenAttribute('class', 'nav nav-pills nav-justified');
+        $menu->setChildrenAttribute('class', 'nav nav-pills nav-stacked');
 
         $menu->addChild('AC', array('route' => 'ac'));
         $menu->addChild('Planta', array('route' => 'planta'));
