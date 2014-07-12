@@ -8,6 +8,11 @@
 </style>
 {% endblock %}
 {% block body -%}
+<div class="col-sm-3 col-md-2 col-lg-2 hidden-xs">
+    <div data-spy="affix" data-offset-top="1" style="background-color:white;width:120px;">
+                    {{ knp_menu_render('ItesACBackendBundle:Builder:backendMenu', { 'currentClass': 'active','template': 'ItesACBackendBundle::knp_menu.html.twig' }) }}
+    </div>
+</div>
 <div class="col-xs-12 col-sm-9 col-md-7 col-lg-6">
         <div class="panel panel-primary">
             <!-- Default panel contents -->
