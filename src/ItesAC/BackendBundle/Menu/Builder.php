@@ -23,7 +23,6 @@ class Builder extends ContainerAware{
         $menu = $factory->createItem('root');
         $menu->setChildrenAttribute('class', 'nav nav-pills nav-stacked');
 
-        $menu->addChild('Control',array('route'=>'institution'));
         $menu->addChild('AC', array('route' => 'ac'));
         $menu->addChild('Planta', array('route' => 'planta'));
         $menu->addChild('Edificio', array('route' => 'edificio'));

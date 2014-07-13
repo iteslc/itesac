@@ -33,22 +33,22 @@ class Arduino
      * @ORM\Column(name="ip", type="string", length=20)
      */
     private $ip;
-    
+
     /**
      * @var ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="AireAcondicionado", mappedBy="arduino")
      */
     private $aires;
-    
+
     /**
      * @var ItesAC\BackendBundle\Entity\Edificio
-     * 
+     *
      * @ORM\ManyToOne(targetEntity="Edificio", inversedBy="arduinos")
-     * @ORM\JoinColumn(name="edificio_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="edificio_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $edificio;
-    
+
     /**
      * Constructor
      */
@@ -93,11 +93,14 @@ class Arduino
     /**
      * Add aires
      *
-     * @param \ItesAC\BackendBundle\Entity\AireAcondicionado $aires
+     * @param  \ItesAC\BackendBundle\Entity\AireAcondicionado $aires
      * @return Arduino
      */
     public function addAire(\ItesAC\BackendBundle\Entity\AireAcondicionado $aires)
     {
+        if ($this->aires->isEmpty()) {
+            $this->setEdificio($aires->getEdificio());
+        }
         $this->aires[] = $aires;
 
         return $this;
@@ -111,24 +114,31 @@ class Arduino
     public function removeAire(\ItesAC\BackendBundle\Entity\AireAcondicionado $aires)
     {
         $this->aires->removeElement($aires);
+        if ($this->aires->isEmpty()) {
+            $this->setEdificio(null);
+        }
     }
 
     /**
      * Get aires
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getAires()
     {
         return $this->aires;
     }
-    
+
     /**
-     * 
+     * Obtiene pines disponibles del arduino
+     *
+     * @return array
+     * @param  \ItesAC\BackendBundle\Entity\AireAcondicionado $aire
      */
-    public function getPinesDisponibles(\ItesAC\BackendBundle\Entity\AireAcondicionado $aire) {
+    public function getPinesDisponibles(\ItesAC\BackendBundle\Entity\AireAcondicionado $aire)
+    {
         $disponibles = array();
-        for($i=2;$i<=13;$i++){
+        for ($i=2;$i<=13;$i++) {
             $disponibles[$i]=$i;
         }
         foreach ($this->getAires() as $air) {
@@ -138,6 +148,30 @@ class Arduino
                 unset($disponibles[$index]);
             }
         }
+
         return $disponibles;
+    }
+
+    /**
+     * Set edificio
+     *
+     * @param  \ItesAC\BackendBundle\Entity\Edificio $edificio
+     * @return Arduino
+     */
+    public function setEdificio(\ItesAC\BackendBundle\Entity\Edificio $edificio = null)
+    {
+        $this->edificio = $edificio;
+
+        return $this;
+    }
+
+    /**
+     * Get edificio
+     *
+     * @return \ItesAC\BackendBundle\Entity\Edificio
+     */
+    public function getEdificio()
+    {
+        return $this->edificio;
     }
 }

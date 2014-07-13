@@ -12,7 +12,7 @@ use ItesAC\ControlBundle\Manager\ACManager;
 use ItesAC\BackendBundle\Entity\Edificio;
 use ItesAC\BackendBundle\Entity\Planta;
 use ItesAC\BackendBundle\Entity\AireAcondicionado;
-use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * Receive all ajax calls
@@ -38,15 +38,16 @@ class AjaxController extends Controller
         $em = $this->getDoctrine()->getManager();
         $aires = $em->getRepository('ItesACBackendBundle:AireAcondicionado')->findAll();
         
-        $acs=new ArrayCollection();
+        $info=array();
         //checara cada uno su estado
         foreach ($aires as $ac) {
             if(!ACManager::checkAC($ac)){
-                $acs->add($ac);
+                $info[]=array(  'id'        =>$ac->getId(),
+                                'planta'    =>$ac->getPlanta()->getId(),
+                                'edificio'  =>$ac->getEdificio()->getId());
             }
         }
-        //si esta apagado los pondra en un arreglo
-        //y enviara el arreglo al templete
+        return new JsonResponse($info);
     }
     /**
      * Turns off all ac in the institution

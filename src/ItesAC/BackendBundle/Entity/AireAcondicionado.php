@@ -113,6 +113,13 @@ class AireAcondicionado
      * @ORM\JoinColumn(name="edificio_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $edificio;
+    
+    /**
+     * @var \DateTime
+     * 
+     * @ORM\Column(name="laston", type="datetime", nulleable=true)
+     */
+    private $lastOn;
 
     /**
      * Get id
@@ -308,5 +315,27 @@ class AireAcondicionado
         } else {
             return false;
         }
+    }
+
+    /**
+     * Set lastOn
+     *
+     * @return AireAcondicionado
+     */
+    public function setLastOn()
+    {
+        $this->lastOn = new \DateTime("now");
+
+        return $this;
+    }
+
+    /**
+     * Get lastOn
+     *
+     * @return \DateTime 
+     */
+    public function getLastOn()
+    {
+        return $this->lastOn;
     }
 }

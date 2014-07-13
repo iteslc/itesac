@@ -44,20 +44,13 @@ class Edificio
      * @ORM\OneToMany(targetEntity="Planta", mappedBy="edificio")
      */
     private $plantas;
-    
+
     /**
      * @var ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="AireAcondicionado", mappedBy="edificio")
      */
     private $aires;
-    
-    /**
-     * @var ArrayCollection
-     *
-     * @ORM\OneToMany(targetEntity="Arduino", mappedBy="edificio")
-     */
-    private $arduinos;
 
     /**
      * Constructor
@@ -150,13 +143,14 @@ class Edificio
                 unset($disponibles[$index]);
             }
         }
+
         return $disponibles;
     }
 
     /**
      * Add aires
      *
-     * @param \ItesAC\BackendBundle\Entity\AireAcondicionado $aires
+     * @param  \ItesAC\BackendBundle\Entity\AireAcondicionado $aires
      * @return Edificio
      */
     public function addAire(\ItesAC\BackendBundle\Entity\AireAcondicionado $aires)
@@ -179,7 +173,7 @@ class Edificio
     /**
      * Get aires
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getAires()
     {

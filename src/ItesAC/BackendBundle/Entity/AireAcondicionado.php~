@@ -77,7 +77,7 @@ class AireAcondicionado
      *      message="Seleccione un modelo"
      * )
      * @ORM\ManyToOne(targetEntity="Modelo")
-     * @ORM\JoinColumn(name="modelo_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="modelo_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $modelo;
 
@@ -88,7 +88,7 @@ class AireAcondicionado
      *      message="Seleccione un arduino"
      * )
      * @ORM\ManyToOne(targetEntity="Arduino", inversedBy="aires")
-     * @ORM\JoinColumn(name="arduino_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="arduino_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $arduino;
 
@@ -99,10 +99,10 @@ class AireAcondicionado
      *      message="Seleccione una planta"
      * )
      * @ORM\ManyToOne(targetEntity="Planta", inversedBy="aires")
-     * @ORM\JoinColumn(name="planta_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="planta_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $planta;
-    
+
     /**
      * @var AireAC\BackendBundle\Entity\Edificio
      *
@@ -110,9 +110,16 @@ class AireAcondicionado
      *      message="Seleccione un edificio"
      * )
      * @ORM\ManyToOne(targetEntity="Edificio", inversedBy="aires")
-     * @ORM\JoinColumn(name="edificio_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="edificio_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $edificio;
+    
+    /**
+     * @var \DateTime
+     * 
+     * @ORM\Column(name="on", type="datetime")
+     */
+    private $lastOn;
 
     /**
      * Get id
@@ -224,6 +231,9 @@ class AireAcondicionado
      */
     public function setArduino(\ItesAC\BackendBundle\Entity\Arduino $arduino = null)
     {
+        if($arduino){
+            $arduino->addAire($this);
+        }
         $this->arduino = $arduino;
 
         return $this;
@@ -265,7 +275,7 @@ class AireAcondicionado
     /**
      * Set edificio
      *
-     * @param \ItesAC\BackendBundle\Entity\Edificio $edificio
+     * @param  \ItesAC\BackendBundle\Entity\Edificio $edificio
      * @return AireAcondicionado
      */
     public function setEdificio(\ItesAC\BackendBundle\Entity\Edificio $edificio = null)
@@ -278,10 +288,32 @@ class AireAcondicionado
     /**
      * Get edificio
      *
-     * @return \ItesAC\BackendBundle\Entity\Edificio 
+     * @return \ItesAC\BackendBundle\Entity\Edificio
      */
     public function getEdificio()
     {
         return $this->edificio;
+    }
+
+    /**
+     * is Congruente el edificio con el arduino
+     *
+     * @return boolean
+     *
+     * @Assert\True(
+     *  message="El arduino no es valido para ese edificio"
+     * )
+     */
+    public function isEdificioYArduinoCongruente()
+    {
+        if($this->arduino===null){
+            return true;
+        }
+        if ($this->edificio===$this->arduino->getEdificio()||
+                $this->arduino->getEdificio()===null) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
