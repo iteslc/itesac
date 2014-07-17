@@ -19,8 +19,8 @@ class ACManager {
      */
     public static function checkAC(AireAcondicionado $ac){
         //se mandara la peticion al arduino
-//        return (rand(1,0)==1);
-        return false;
+        return (rand(0,1)==1);
+//        return false;
     }
     /**
      * turns on the AC

@@ -60,8 +60,40 @@ class AjaxController extends Controller
         if(!$request->isXmlHttpRequest()){
             throw $this->createNotFoundException();
         }
-        //llamara todos los aires 
-        //los apagara
+        //obtendra todos los ac
+        $em = $this->getDoctrine()->getManager();
+        $aires = $em->getRepository('ItesACBackendBundle:AireAcondicionado')->findAll();
+        //apaga cada uno
+        foreach ($aires as $ac) {
+            ACManager::turnOffAC($ac);
+        }
+        return new Response();
+    }
+    /**
+     * Checks status of all ac in the institution
+     * 
+     * @Route("/all/check", name="control_all_check")
+     * @Method("GET")
+     * @Template()
+     */
+    public function checkAllAction(Request $request)
+    {
+        if(!$request->isXmlHttpRequest()){
+            throw $this->createNotFoundException();
+        }
+        //obtendra todos los ac
+        $em = $this->getDoctrine()->getManager();
+        $aires = $em->getRepository('ItesACBackendBundle:AireAcondicionado')->findAll();
+        
+        $info=array();
+        //checara cada uno su estado
+        foreach ($aires as $ac) {
+            $info[]=array(  'id'        => $ac->getId(),
+                            'planta'    => $ac->getPlanta()->getId(),
+                            'edificio'  => $ac->getEdificio()->getId(),
+                            'isOn'      => ACManager::checkAC($ac));
+        }
+        return new JsonResponse($info);
     }
     /**
      * Turns on all ac in the edificio
@@ -75,6 +107,16 @@ class AjaxController extends Controller
         if(!$request->isXmlHttpRequest()){
             throw $this->createNotFoundException();
         }
+        $info=array();
+        //checara cada uno su estado
+        foreach ($edificio->getAires() as $ac) {
+            if(!ACManager::checkAC($ac)){
+                $info[]=array(  'id'        =>$ac->getId(),
+                                'planta'    =>$ac->getPlanta()->getId(),
+                                'edificio'  =>$ac->getEdificio()->getId());
+            }
+        }
+        return new JsonResponse($info);
     }
     /**
      * Turns off all ac in the edificio
@@ -88,20 +130,11 @@ class AjaxController extends Controller
         if(!$request->isXmlHttpRequest()){
             throw $this->createNotFoundException();
         }
-    }
-    /**
-     * Checks status of all ac in the edificio
-     * 
-     * @Route("/edificio/{id}/check", name="control_edificio_check")
-     * @ParamConverter("edificio", class="ItesACBackendBundle:Edificio")
-     * @Method("GET")
-     * @Template()
-     */
-    public function checkEdificioAction(Request $request, Edificio $edificio)
-    {
-        if(!$request->isXmlHttpRequest()){
-            throw $this->createNotFoundException();
+        //apaga cada uno
+        foreach ($edificio->getAires() as $ac) {
+            ACManager::turnOffAC($ac);
         }
+        return new Response();
     }
     /**
      * Turns on all ac in the planta
@@ -115,6 +148,16 @@ class AjaxController extends Controller
         if(!$request->isXmlHttpRequest()){
             throw $this->createNotFoundException();
         }
+        $info=array();
+        //checara cada uno su estado
+        foreach ($planta->getAires() as $ac) {
+            if(!ACManager::checkAC($ac)){
+                $info[]=array(  'id'        =>$ac->getId(),
+                                'planta'    =>$ac->getPlanta()->getId(),
+                                'edificio'  =>$ac->getEdificio()->getId());
+            }
+        }
+        return new JsonResponse($info);
     }
     /**
      * Turns off all ac in the planta
@@ -128,6 +171,11 @@ class AjaxController extends Controller
         if(!$request->isXmlHttpRequest()){
             throw $this->createNotFoundException();
         }
+        //apaga cada uno
+        foreach ($planta->getAires() as $ac) {
+            ACManager::turnOffAC($ac);
+        }
+        return new Response();
     }
     /**
      * Checks status of all ac in the planta
@@ -142,6 +190,15 @@ class AjaxController extends Controller
         if(!$request->isXmlHttpRequest()){
             throw $this->createNotFoundException();
         }
+        $info=array();
+        //checara cada uno su estado
+        foreach ($planta->getAires() as $ac) {
+            $info[]=array(  'id'        => $ac->getId(),
+                            'planta'    => $ac->getPlanta()->getId(),
+                            'edificio'  => $ac->getEdificio()->getId(),
+                            'isOn'      => ACManager::checkAC($ac));
+        }
+        return new JsonResponse($info);
     }
     /**
      * Turns on ac
@@ -155,6 +212,11 @@ class AjaxController extends Controller
         if(!$request->isXmlHttpRequest()){
             throw $this->createNotFoundException();
         }
+        //checa si esta habilitado para encender aires
+        if(isTurnOnEnable()){
+            ACManager::turnOnAC($ac);
+        }
+        return new Response();
     }
     /**
      * Turns off ac
@@ -168,20 +230,16 @@ class AjaxController extends Controller
         if(!$request->isXmlHttpRequest()){
             throw $this->createNotFoundException();
         }
+        ACManager::turnOffAC($ac);
+        
+        return new Reponse();
     }
     /**
-     * Checks ac's status
+     * is enable if all ac's last on is since more than 15 seconds
      * 
-     * @Route("/ac/{id}/check", name="control_ac_check")
-     * @ParamConverter("ac", class="ItesACBackendBundle:AireAcondicionado")
-     * @Method("GET")
-     * @Template()
+     * @return boolean
      */
-    public function checkACAction(Request $request, AireAcondicionado $ac)
-    {
-        if(!$request->isXmlHttpRequest()){
-            throw $this->createNotFoundException();
-        }
+    private function isTurnOnEnable(){
+        return true;
     }
-
 }
