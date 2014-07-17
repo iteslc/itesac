@@ -1411,12 +1411,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/liip/LiipImagineBundle.git",
-                "reference": "a999d009f9d60ee17aea164b50ee9d32c1953ebc"
+                "reference": "80dd3585f2445f8fb59abad2f6526a0cb3c10478"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liip/LiipImagineBundle/zipball/a999d009f9d60ee17aea164b50ee9d32c1953ebc",
-                "reference": "a999d009f9d60ee17aea164b50ee9d32c1953ebc",
+                "url": "https://api.github.com/repos/liip/LiipImagineBundle/zipball/80dd3585f2445f8fb59abad2f6526a0cb3c10478",
+                "reference": "80dd3585f2445f8fb59abad2f6526a0cb3c10478",
                 "shasum": ""
             },
             "require": {
@@ -1476,7 +1476,7 @@
                 "image",
                 "imagine"
             ],
-            "time": "2014-06-25 14:22:37"
+            "time": "2014-07-14 09:39:41"
         },
         {
             "name": "monolog/monolog",
@@ -2083,16 +2083,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v2.5.1",
+            "version": "v2.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "e3d2844abc988bc467bb1593cd340700096b0ac0"
+                "reference": "e66ee967571b89234c90946fe0d50dad195ad29c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/e3d2844abc988bc467bb1593cd340700096b0ac0",
-                "reference": "e3d2844abc988bc467bb1593cd340700096b0ac0",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/e66ee967571b89234c90946fe0d50dad195ad29c",
+                "reference": "e66ee967571b89234c90946fe0d50dad195ad29c",
                 "shasum": ""
             },
             "require": {
@@ -2195,7 +2195,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2014-07-08 14:42:08"
+            "time": "2014-07-15 15:39:46"
         },
         {
             "name": "twbs/bootstrap",
@@ -2351,12 +2351,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dustin10/VichUploaderBundle.git",
-                "reference": "affcaccfb59a318d1305285401dc171e805f1b74"
+                "reference": "c09c4e3c72a8e3a1310d525cb50fa92a41ed7f8f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/affcaccfb59a318d1305285401dc171e805f1b74",
-                "reference": "affcaccfb59a318d1305285401dc171e805f1b74",
+                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/c09c4e3c72a8e3a1310d525cb50fa92a41ed7f8f",
+                "reference": "c09c4e3c72a8e3a1310d525cb50fa92a41ed7f8f",
                 "shasum": ""
             },
             "require": {
@@ -2386,6 +2386,11 @@
                 "willdurand/propel-eventdispatcher-bundle": ">=1.2"
             },
             "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
             "autoload": {
                 "psr-0": {
                     "Vich\\UploaderBundle": ""
@@ -2408,7 +2413,7 @@
                 "file uploads",
                 "upload"
             ],
-            "time": "2014-07-09 18:29:22"
+            "time": "2014-07-15 18:46:37"
         }
     ],
     "packages-dev": [
