@@ -117,7 +117,7 @@ class AireAcondicionado
     /**
      * @var \DateTime
      * 
-     * @ORM\Column(name="laston", type="datetime", nulleable=true)
+     * @ORM\Column(name="laston", type="datetime", nullable=true)
      */
     private $lastOn;
 
