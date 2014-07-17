@@ -30,10 +30,11 @@ background: #428bca;
         <h4 class="modal-title" id="labelac" style="color:white;">Posicion AC</h4>
       </div>
       <div class="modal-body">
-        <div id="ac_position" style="border: 2px solid black; width: 768px; height: 350px; background-size: cover;">
-            <img src="{{ asset('/bundles/itesacbackend/images/ac_vector.png') | 
+        <div id="ac_position" style="border: 2px solid black;width:100%; position: relative; margin: auto;"> 
+            <img class= "img-responsive"  src="/Geekly%20Development%20House/ItesAC/web/{{vich_uploader_asset(entity.planta, 'image')}}">
+            <img style="width:3.8%; height:3.3%;position: absolute;" src="{{ asset('/bundles/itesacbackend/images/ac_vector.png') | 
                                 imagine_filter('mini_ac') }}" 
-            id="actarget"/>
+            id="actarget">
         </div>
       </div>
         <div class="modal-footer">
