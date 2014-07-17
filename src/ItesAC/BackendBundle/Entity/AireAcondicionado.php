@@ -46,7 +46,7 @@ class AireAcondicionado
      * )
      * @Assert\Range(
      *      min="0",
-     *      max="500",
+     *      max="96",
      *      minMessage="Coloque una posicion valida",
      *      maxMessage="Coloque una posicion valida"
      * )
@@ -62,7 +62,7 @@ class AireAcondicionado
      * )
      * @Assert\Range(
      *      min="0",
-     *      max="250",
+     *      max="96",
      *      minMessage="Coloque una posicion valida",
      *      maxMessage="Coloque una posicion valida"
      * )
