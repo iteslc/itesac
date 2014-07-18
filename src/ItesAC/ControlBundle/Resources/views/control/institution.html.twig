@@ -1,18 +1,39 @@
 {% extends 'ItesACControlBundle::layout.html.twig' %}
 {% block cuerpo %}
+    <p id="all_on">Total AC encendidos: {{ badge('0') }}</p>
+    <p id="all_off">Total AC apagados: {{ badge('0') }}</p>
+    <div class="btn-group btn-group-justified">
+          <a href="#" data_link="{{path('control_all_off')}}" class="btn btn-danger turn_off all" role="button">{{ icon('off') }} OFF ALL</a> 
+          <a href="#" data-link="{{path('control_all_on')}}" class="btn btn-success" role="button">ON ALL</a>
+    </div>
 {% for entity in edificios %}
 <div class="col-sm-6 col-md-4 col-lg-4">
   <div class="thumbnail">
-      <a href="#" class="btn btn-primary btn-block" role="button"><h1>Edificio {{ entity.nombre }}</h1></a>
-    <div class="caption">
+      {%if entity.plantas|length > 0 %}
+      <a href="{{path('control_planta', {'id': entity.plantas|first.id})}}" class="btn btn-primary btn-block" role="button"><h1>Edificio {{ entity.nombre }}</h1></a>
+    <div class="caption edif_data">
       <h3>Detalles</h3>
-      <p>AC encendidos: {{ badge('0') }}</p>
-      <p>AC apagados: {{ badge('0') }}</p>
+      <p id="edificio_{{entity.id}}_on" class="cont_on">AC encendidos: {{ badge('0') }}</p>
+      <p id="edificio_{{entity.id}}_off" class="cont_off">AC apagados: {{ badge('0') }}</p>
       <div class="btn-group btn-group-justified">
-          <a href="#" class="btn btn-danger" role="button">{{ icon('off') }} OFF ALL</a> <a href="#" class="btn btn-success" role="button">ON ALL</a>
+          <a href="#" data_link="{{path('control_edificio_off', { 'id': entity.id })}}" data-id="{{entity.id}}" class="btn btn-danger turn_off edificio" role="button">{{ icon('off') }} OFF ALL</a> 
+          <a href="#" data_link="{{path('control_edificio_on', { 'id': entity.id })}}" class="btn btn-success" role="button">ON ALL</a>
       </div>
     </div>
+      {%else%}
+          <h1>Edificio {{ entity.nombre }}</h1>
+          <p>este edificio no cuenta con plantas registradas.</p>
+          <a href="{{path('planta_new')}}" class="btn btn-primary btn-block" role="button"><h1>Crear una planta</h1></a>
+      {%endif%}
   </div>
 </div>
 {% endfor %}
 {% endblock %}
+{% block javascripts %}
+     {{ parent() }}
+     {% javascripts 
+        '@ItesACControlBundle/Resources/public/js/checkAC.js' 
+        '@ItesACControlBundle/Resources/public/js/turnOff.js' %}
+         <script type="text/javascript" src="{{ asset_url }}"></script>
+     {% endjavascripts %}
+ {% endblock %}
