@@ -13,6 +13,7 @@ web/images/*
 web/fonts/*
 web/js/*
 web/css/*
+web/media/*
 
 # Configuration files
 app/config/parameters.ini
@@ -26,3 +27,5 @@ nbproject/*
 !nbproject/project.properties
 !nbproject/project.xml
 
+#bower
+web/vendor/*

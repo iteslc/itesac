@@ -1,0 +1,6 @@
+{
+    "name": "ItesAC",
+    "dependencies": {
+        "jquery.countdown": "*"
+    }
+}

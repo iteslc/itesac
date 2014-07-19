@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a3d0890aebcb5acc05a474252ee81a4b",
+    "hash": "55fe6f9f817a4d8b8f9b22aa215cd842",
     "packages": [
         {
             "name": "braincrafted/bootstrap-bundle",
@@ -1121,12 +1121,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/KnpMenu.git",
-                "reference": "532a4ad323be54da77179022474e873d307e524c"
+                "reference": "ca591b2fd7021c2608c22cfe5ad54eec66c1acee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/KnpMenu/zipball/532a4ad323be54da77179022474e873d307e524c",
-                "reference": "532a4ad323be54da77179022474e873d307e524c",
+                "url": "https://api.github.com/repos/KnpLabs/KnpMenu/zipball/ca591b2fd7021c2608c22cfe5ad54eec66c1acee",
+                "reference": "ca591b2fd7021c2608c22cfe5ad54eec66c1acee",
                 "shasum": ""
             },
             "require": {
@@ -1177,7 +1177,7 @@
                 "menu",
                 "tree"
             ],
-            "time": "2014-06-20 09:37:12"
+            "time": "2014-07-18 10:01:56"
         },
         {
             "name": "knplabs/knp-menu-bundle",
@@ -1240,12 +1240,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/KnpPaginatorBundle.git",
-                "reference": "67eb0e1c8f0d7cc88a2c807bf9dac3bbf5644769"
+                "reference": "d35547a771a03923d19d55ea335cd2801ad72dc2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/KnpPaginatorBundle/zipball/67eb0e1c8f0d7cc88a2c807bf9dac3bbf5644769",
-                "reference": "67eb0e1c8f0d7cc88a2c807bf9dac3bbf5644769",
+                "url": "https://api.github.com/repos/KnpLabs/KnpPaginatorBundle/zipball/d35547a771a03923d19d55ea335cd2801ad72dc2",
+                "reference": "d35547a771a03923d19d55ea335cd2801ad72dc2",
                 "shasum": ""
             },
             "require": {
@@ -1290,7 +1290,7 @@
                 "pagination",
                 "paginator"
             ],
-            "time": "2014-07-08 22:31:25"
+            "time": "2014-07-18 12:20:39"
         },
         {
             "name": "kriswallsmith/assetic",
@@ -2351,12 +2351,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dustin10/VichUploaderBundle.git",
-                "reference": "c09c4e3c72a8e3a1310d525cb50fa92a41ed7f8f"
+                "reference": "4dec86de832b80a0efa7d25dc67cb21f4e460efb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/c09c4e3c72a8e3a1310d525cb50fa92a41ed7f8f",
-                "reference": "c09c4e3c72a8e3a1310d525cb50fa92a41ed7f8f",
+                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/4dec86de832b80a0efa7d25dc67cb21f4e460efb",
+                "reference": "4dec86de832b80a0efa7d25dc67cb21f4e460efb",
                 "shasum": ""
             },
             "require": {
@@ -2413,7 +2413,7 @@
                 "file uploads",
                 "upload"
             ],
-            "time": "2014-07-15 18:46:37"
+            "time": "2014-07-18 20:01:26"
         }
     ],
     "packages-dev": [
