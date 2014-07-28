@@ -56,6 +56,7 @@
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse mainmenu">
+                        {% block process %}{% endblock %}
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="{{ path('institution') }}">Control</a></li>
                             <li class="dropdown">
