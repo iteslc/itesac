@@ -120,6 +120,13 @@ class AireAcondicionado
      * @ORM\Column(name="laston", type="datetime", nullable=true)
      */
     private $lastOn;
+    
+    /**
+     * @var integer
+     * 
+     * @ORM\Column(name="tail", type="integer", nullable=true)
+     */
+    private $tail;
 
     /**
      * Get id
@@ -337,5 +344,28 @@ class AireAcondicionado
     public function getLastOn()
     {
         return $this->lastOn;
+    }
+
+    /**
+     * Set tail
+     *
+     * @param integer $tail
+     * @return AireAcondicionado
+     */
+    public function setTail($tail)
+    {
+        $this->tail = $tail;
+
+        return $this;
+    }
+
+    /**
+     * Get tail
+     *
+     * @return integer 
+     */
+    public function getTail()
+    {
+        return $this->tail;
     }
 }

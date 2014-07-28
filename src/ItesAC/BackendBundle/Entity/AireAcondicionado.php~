@@ -46,7 +46,7 @@ class AireAcondicionado
      * )
      * @Assert\Range(
      *      min="0",
-     *      max="500",
+     *      max="96",
      *      minMessage="Coloque una posicion valida",
      *      maxMessage="Coloque una posicion valida"
      * )
@@ -62,7 +62,7 @@ class AireAcondicionado
      * )
      * @Assert\Range(
      *      min="0",
-     *      max="250",
+     *      max="96",
      *      minMessage="Coloque una posicion valida",
      *      maxMessage="Coloque una posicion valida"
      * )
@@ -117,9 +117,16 @@ class AireAcondicionado
     /**
      * @var \DateTime
      * 
-     * @ORM\Column(name="on", type="datetime")
+     * @ORM\Column(name="laston", type="datetime", nullable=true)
      */
     private $lastOn;
+    
+    /**
+     * @var integer
+     * 
+     * @ORM\Column(name="tail", type="integer", nullable=true)
+     */
+    private $tail;
 
     /**
      * Get id
@@ -315,5 +322,27 @@ class AireAcondicionado
         } else {
             return false;
         }
+    }
+
+    /**
+     * Set lastOn
+     *
+     * @return AireAcondicionado
+     */
+    public function setLastOn()
+    {
+        $this->lastOn = new \DateTime("now");
+
+        return $this;
+    }
+
+    /**
+     * Get lastOn
+     *
+     * @return \DateTime 
+     */
+    public function getLastOn()
+    {
+        return $this->lastOn;
     }
 }
