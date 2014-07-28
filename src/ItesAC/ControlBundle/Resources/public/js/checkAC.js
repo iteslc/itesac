@@ -35,11 +35,15 @@ $(document).ready(function(){
                     var ac=$('#ac_'+elem['id']);
                     if(elem['isOn']){
                         ac.removeClass('is_off');
-                        ac.addClass('is_on turn_off');
+                        ac.addClass('is_on');
+                        ac.removeClass('turn_on');
+                        ac.addClass('turn_off');
                         on++;
                     } else {
                         ac.removeClass('is_on');
                         ac.addClass('is_off');
+                        ac.removeClass('turn_off');
+                        ac.addClass('turn_on');
                         off++;
                     }
                     

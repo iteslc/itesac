@@ -29,7 +29,6 @@ class ACManager {
      */
     public static function turnOnAC(AireAcondicionado $ac){
         //se mandara la instruccion al arduino
-        //$ac->setLastOn();
     }
     /**
      * turns off the AC
@@ -37,6 +36,6 @@ class ACManager {
      * @param \ItesAC\BackendBundle\Entity\AireAcondicionado $ac
      */
     public static function turnOffAC(AireAcondicionado $ac){
-        //se mandara la petion al arduino
+        //se mandara la peticion al arduino
     }
 }

@@ -4,8 +4,8 @@
 <p id="planta_on">Total AC encendidos: {{ badge('0') }}</p>
 <p id="planta_off">Total AC apagados: {{ badge('0') }}</p>
 <div class="btn-group btn-group-justified">
-      <a href="#" data_link="{{path('control_planta_off', { 'id': planta.id })}}" data-id="{{planta.id}}" class="btn btn-danger turn_off planta" role="button">{{ icon('off') }} OFF ALL</a> 
-      <a href="#" data-link="{{path('control_planta_on', { 'id': planta.id })}}" data-id="{{planta.id}}" class="btn btn-success" role="button">ON ALL</a>
+      <a href="#" data-link="{{path('control_planta_off', { 'id': planta.id })}}" data-id="{{planta.id}}" class="btn btn-danger turn_off planta" role="button">{{ icon('off') }} OFF ALL</a> 
+      <a href="#" data-link="{{path('control_planta_on', { 'id': planta.id })}}" data-id="{{planta.id}}" class="btn btn-success turn_on planta" role="button">ON ALL</a>
 </div>
 {% endblock %}
 {% block cuerpo %}
@@ -17,16 +17,8 @@
     <div id="ac_position" style="border: 2px solid black;width:100%; position: relative; margin: auto;margin-top:10px;"> 
         <img class= "img-responsive"  src="/Geekly%20Development%20House/ItesAC/web/{{vich_uploader_asset(planta, 'image')}}">
         {% for ac in planta.aires %}
-            <img id="ac_{{ac.id}}" class="ac" style="width:3.8%; height:3.3%;position: absolute;left:{{ac.posicionX}}%;top:{{ac.posicionY}}%;"
+            <img id="ac_{{ac.id}}" class="ac" data-id="{{ac.id}}" style="width:3.8%; height:3.3%;position: absolute;left:{{ac.posicionX}}%;top:{{ac.posicionY}}%;"
                 src="{{vich_uploader_asset(ac.modelo, 'image') | imagine_filter('mini_ac') }}">
         {%endfor%}
     </div>
 {%endblock%}
-{% block javascripts %}
-     {{ parent() }}
-     {% javascripts 
-        '@ItesACControlBundle/Resources/public/js/checkAC.js' 
-        '@ItesACControlBundle/Resources/public/js/turnOff.js' %}
-         <script type="text/javascript" src="{{ asset_url }}"></script>
-     {% endjavascripts %}
- {% endblock %}

@@ -4,8 +4,8 @@
 <p id="all_on">Total AC encendidos: {{ badge('0') }}</p>
 <p id="all_off">Total AC apagados: {{ badge('0') }}</p>
 <div class="btn-group btn-group-justified">
-      <a href="#" data_link="{{path('control_all_off')}}" class="btn btn-danger turn_off all" role="button">{{ icon('off') }} OFF ALL</a> 
-      <a href="#" data-link="{{path('control_all_on')}}" class="btn btn-success" role="button">ON ALL</a>
+      <a href="#" data-link="{{path('control_all_off')}}" class="btn btn-danger turn_off all" role="button">{{ icon('off') }} OFF ALL</a> 
+      <a href="#" data-link="{{path('control_all_on')}}" class="btn btn-success turn_on all" role="button">ON ALL</a>
 </div>
 {% endblock %}
 {% block cuerpo %}
@@ -24,8 +24,8 @@
               <a href="{{path('control_planta', {'id': entity.plantas|last.id})}}" class="btn btn-primary" role="button">{{ entity.plantas|last.nombre }}</a>
           </div>
           <div class="btn-group btn-group-justified" style="padding-top:10px;">
-              <a href="#" data_link="{{path('control_edificio_off', { 'id': entity.id })}}" data-id="{{entity.id}}" class="btn btn-danger turn_off edificio" role="button">{{ icon('off') }} OFF ALL</a> 
-              <a href="#" data_link="{{path('control_edificio_on', { 'id': entity.id })}}" class="btn btn-success" role="button">ON ALL</a>
+              <a href="#" data-link="{{path('control_edificio_off', { 'id': entity.id })}}" data-id="{{entity.id}}" class="btn btn-danger turn_off edificio" role="button">{{ icon('off') }} OFF ALL</a> 
+              <a href="#" data-link="{{path('control_edificio_on', { 'id': entity.id })}}" data-id="{{entity.id}}" class="btn btn-success turn_on edificio" role="button">ON ALL</a>
           </div>
       </div>
     </div>
@@ -39,11 +39,3 @@
 </div>
 {% endfor %}
 {% endblock %}
-{% block javascripts %}
-     {{ parent() }}
-     {% javascripts 
-        '@ItesACControlBundle/Resources/public/js/checkAC.js' 
-        '@ItesACControlBundle/Resources/public/js/turnOff.js' %}
-         <script type="text/javascript" src="{{ asset_url }}"></script>
-     {% endjavascripts %}
- {% endblock %}

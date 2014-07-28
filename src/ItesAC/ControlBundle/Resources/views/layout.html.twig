@@ -20,3 +20,21 @@
     {% block cuerpo %}{% endblock %}
 </div>
 {% endblock %}
+ {% block process %}
+     <div id="countdown">
+         <div id="infobf"></div>
+     <span id="clock"></span>
+     <div id="infoaf"></div>
+     </div>
+ {% endblock %}
+{% block javascripts %}
+     {{ parent() }}
+     <script src="/Geekly%20Development%20House/ItesAC/web/vendor/jquery.countdown/dist/jquery.countdown.js"></script>
+     {% javascripts 
+        '@ItesACControlBundle/Resources/public/js/checkAC.js' 
+        '@ItesACControlBundle/Resources/public/js/turnOff.js'  
+        '@ItesACControlBundle/Resources/public/js/remoteProcess.js'
+        '@ItesACControlBundle/Resources/public/js/turnOn.js'%}
+         <script type="text/javascript" src="{{ asset_url }}"></script>
+     {% endjavascripts %}
+ {% endblock %}

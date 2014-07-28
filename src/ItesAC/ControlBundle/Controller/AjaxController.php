@@ -13,6 +13,7 @@ use ItesAC\BackendBundle\Entity\Edificio;
 use ItesAC\BackendBundle\Entity\Planta;
 use ItesAC\BackendBundle\Entity\AireAcondicionado;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Receive all ajax calls
@@ -34,6 +35,12 @@ class AjaxController extends Controller
         if(!$request->isXmlHttpRequest()){
             throw $this->createNotFoundException();
         }
+        $turner=$this->getLatelyACTurnedOn();
+        if($turner){
+            $info=$this->getInfoOfLastAC($turner);
+            return new JsonResponse($info);
+        }
+        
         //obtendra todos los ac
         $em = $this->getDoctrine()->getManager();
         $aires = $em->getRepository('ItesACBackendBundle:AireAcondicionado')->findAll();
@@ -107,6 +114,12 @@ class AjaxController extends Controller
         if(!$request->isXmlHttpRequest()){
             throw $this->createNotFoundException();
         }
+        $turner=$this->getLatelyACTurnedOn();
+        if($turner){
+            $info=$this->getInfoOfLastAC($turner);
+            return new JsonResponse($info);
+        }
+        
         $info=array();
         //checara cada uno su estado
         foreach ($edificio->getAires() as $ac) {
@@ -148,6 +161,12 @@ class AjaxController extends Controller
         if(!$request->isXmlHttpRequest()){
             throw $this->createNotFoundException();
         }
+        $turner=$this->getLatelyACTurnedOn();
+        if($turner){
+            $info=$this->getInfoOfLastAC($turner);
+            return new JsonResponse($info);
+        }
+        
         $info=array();
         //checara cada uno su estado
         foreach ($planta->getAires() as $ac) {
@@ -203,20 +222,29 @@ class AjaxController extends Controller
     /**
      * Turns on ac
      * 
-     * @Route("/ac/{id}/on", name="control_ac_on")
+     * @Route("/ac/{id}/on/{tail}", name="control_ac_on", defaults={"tail" = 0})
      * @ParamConverter("ac", class="ItesACBackendBundle:AireAcondicionado")
      * @Method("GET")
      */
-    public function turnOnACAction(Request $request, AireAcondicionado $ac)
+    public function turnOnACAction(Request $request, AireAcondicionado $ac,$tail)
     {
         if(!$request->isXmlHttpRequest()){
             throw $this->createNotFoundException();
         }
-        //checa si esta habilitado para encender aires
-        if(isTurnOnEnable()){
-            ACManager::turnOnAC($ac);
+        
+        $turner=$this->getLatelyACTurnedOn();
+        if($turner){
+            $info=$this->getInfoOfLastAC($turner);
+            return new JsonResponse($info);
         }
-        return new Response();
+        
+        $em=$this->getDoctrine()->getEntityManager();
+        ACManager::turnOnAC($ac);
+        $ac->setLastOn();
+        $ac->setTail($tail);
+        $em->persist($ac);
+        $em->flush();
+        return new JsonResponse();
     }
     /**
      * Turns off ac
@@ -232,14 +260,60 @@ class AjaxController extends Controller
         }
         ACManager::turnOffAC($ac);
         
-        return new Reponse();
+        return new Response();
     }
     /**
-     * is enable if all ac's last on is since more than 15 seconds
+     * Checks the current process status
      * 
-     * @return boolean
+     * @Route("/checkprocess", name="control_check_process")
+     * @Method("GET")
      */
-    private function isTurnOnEnable(){
-        return true;
+    public function checkProcessAction(Request $request)
+    {
+        if(!$request->isXmlHttpRequest()){
+            throw $this->createNotFoundException();
+        }
+        
+        $turner=$this->getLatelyACTurnedOn();
+        if($turner){
+            $info=$this->getInfoOfLastAC($turner);
+            return new JsonResponse($info);
+        }
+        
+        return new JsonResponse();
+    }
+    /**
+     * get the ac turned on 30 seconds ago
+     * 
+     * @return \ItesAC\BackendBundle\Entity\AireAcondicionado
+     */
+    private function getLatelyACTurnedOn(){
+        $now=new \DateTime("now");
+        $time=$now->sub(new \DateInterval('PT30S'));
+        
+        $repository = $this ->getDoctrine()
+                            ->getRepository('ItesACBackendBundle:AireAcondicionado');
+        
+        $query = $repository->createQueryBuilder('a')
+                            ->where('a.lastOn >= :ago')
+                            ->setParameter('ago', $time)
+                            ->getQuery();
+
+        return $query->getOneOrNullResult();
+    }
+    /**
+     * get array with info about the last ac turned on
+     * 
+     * @param \ItesAC\BackendBundle\Entity\AireAcondicionado $turner
+     * @return array
+     */
+    private function getInfoOfLastAC(AireAcondicionado $turner){
+        $interval=$turner->getLastOn()->diff(new \DateTime("now"));
+        $info=array('id'        => $turner->getId(),
+                    'planta'    => $turner->getPlanta()->getId(),
+                    'edificio'  => $turner->getEdificio()->getId(),
+                    'lastOn'    => $interval->format('%s'),
+                    'tail'      => $turner->getTail());
+        return $info;
     }
 }

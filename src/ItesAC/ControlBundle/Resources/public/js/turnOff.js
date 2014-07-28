@@ -2,8 +2,10 @@ $(document).ready(function(){
     $('body').on('click','.turn_off',function(event){
         event.preventDefault();
         var turner = $(this);
+        var link;
+        turner.hasClass('ac') ? link='../ac/'+turner.data('id')+'/off': link=turner.data('link');
         $.ajax({
-            url: $(this).attr('href'),
+            url: link,
             type:'GET',
             error: function(){
                 alert('hubo un error al tratar de apagar.');
@@ -13,6 +15,7 @@ $(document).ready(function(){
                     turner.removeClass('is_on');
                     turner.removeClass('turn_off');
                     turner.addClass('is_off');
+                    turner.addClass('turn_on');
                     var plaon=$('#planta_on').find('span');
                     var plaoff=$('#planta_off').find('span');
                     var con=parseInt(plaon.text());con--;
@@ -23,6 +26,8 @@ $(document).ready(function(){
                 else if(turner.hasClass('planta')){
                     $('.ac').removeClass('is_on');
                     $('.ac').addClass('is_off');
+                    $('.ac').removeClass('turn_off');
+                    $('.ac').addClass('turn_on');
                     var plaon=$('#planta_on').find('span');
                     var plaoff=$('#planta_off').find('span');
                     var con=parseInt(plaon.text());
