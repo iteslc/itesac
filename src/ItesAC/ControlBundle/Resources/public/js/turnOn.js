@@ -44,7 +44,7 @@ function turnOneByOne(json,index){
     var tail=json.length-index-1;
     $.ajax({
         dataType: 'json',
-        url: '/Geekly%20Development%20House/ItesAC/web/app_dev.php/control/ac/'+json[index]['id']+'/on',
+        url: '/Geekly%20Development%20House/ItesAC/web/app_dev.php/control/ac/'+json[index]['id']+'/on/'+tail,
         type:'GET',
         error: function(){
             alert('hubo un error con el servidor.');
