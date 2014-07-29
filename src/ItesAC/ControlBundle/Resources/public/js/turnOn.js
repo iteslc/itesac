@@ -1,6 +1,10 @@
 $(document).ready(function(){
     $('body').on('click','.turn_on',function(event){
         event.preventDefault();
+        if(!enab){
+            alert('espere a que termine el proceso');
+            return;
+        }
         var turner = $(this);
         var link;
         turner.hasClass('ac') ? link='../ac/'+turner.data('id')+'/on': link=turner.data('link');
@@ -22,7 +26,19 @@ $(document).ready(function(){
                 }
                 else{
                     if(turner.hasClass('ac')){
+                        enab=false;
                         turnOnAC(turner);
+                        var date=new Date();
+                        date.setSeconds(date.getSeconds()+31);
+                        $('#infobf').html('La aplicacion esta en proceso de encendido.');
+                        $('#infoaf').html('para que pueda realizar acciones.');
+                        $('#clock').countdown(date)
+                            .on('update.countdown', function(event){
+                                $(this).html(event.strftime(' %-S segundos '));
+                            })
+                            .on('finish.countdown', function(){
+                                enab=true;
+                            });
                     }
                     else {
                         //recibira los datos json
@@ -32,6 +48,7 @@ $(document).ready(function(){
                         //mientras haya encendera el siguiente, actualizara
                         //tambien dira cuantos hay en cola
                         if(json.length>0){
+                            enab=false;
                             turnOneByOne(json,0);
                         }
                     }
@@ -48,6 +65,7 @@ function turnOneByOne(json,index){
         type:'GET',
         error: function(){
             alert('hubo un error con el servidor.');
+            enab=true;
         },
         success: function(data){
             if(data['id']!=null){
@@ -79,6 +97,9 @@ function turnOneByOne(json,index){
                         if(tail>0){
                             index++;
                             turnOneByOne(json,index);
+                        }
+                        else{
+                            enab=true;
                         }
                     });
             }

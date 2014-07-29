@@ -3,6 +3,7 @@ function remoteProcess(json){
     //cola para encender y cuando llegue a su fin
     //volvera a conseguir informacion de cola, actualizar datos
     //y si aun esta el proceso repetir la funcion
+    enab=false;
     var time=(35-parseInt(json['lastOn']));
     var date=new Date();
     date.setSeconds(date.getSeconds()+time);
@@ -32,11 +33,15 @@ function remoteProcess(json){
                     type:'GET',
                     error: function(){
                         alert('hubo un error con el servidor.');
+                        enab=true;
                     },
                     success: function(json){
                         remoteProcess(json);
                     }
                 });
+            }
+            else{
+                enab=true;
             }
     });
 }

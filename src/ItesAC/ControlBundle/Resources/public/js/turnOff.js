@@ -1,6 +1,10 @@
 $(document).ready(function(){
     $('body').on('click','.turn_off',function(event){
         event.preventDefault();
+        if(!enab){
+            alert('espere a que termine el proceso');
+            return;
+        }
         var turner = $(this);
         var link;
         turner.hasClass('ac') ? link='../ac/'+turner.data('id')+'/off': link=turner.data('link');
