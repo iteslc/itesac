@@ -15,7 +15,7 @@
         {%endif%}
     {%endfor%}
     <div id="ac_position" style="border: 2px solid black;width:100%; position: relative; margin: auto;margin-top:10px;"> 
-        <img class= "img-responsive"  src="/Geekly%20Development%20House/ItesAC/web/{{vich_uploader_asset(planta, 'image')}}">
+        <img class= "img-responsive"  src="{{asset('images/plantas/53bafdcfd568d.png')}}">
         {% for ac in planta.aires %}
             <img id="ac_{{ac.id}}" class="ac" data-id="{{ac.id}}" style="width:3.8%; height:3.3%;position: absolute;left:{{ac.posicionX}}%;top:{{ac.posicionY}}%;"
                 src="{{vich_uploader_asset(ac.modelo, 'image') | imagine_filter('mini_ac') }}">

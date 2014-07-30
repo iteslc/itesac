@@ -13,15 +13,16 @@
 <div class="col-sm-6 col-md-4 col-lg-4">
     {%if entity.plantas|length > 0 %}
     <div class="thumbnail"style="border: 1px solid;border-color: #A3A4A8 #B1B2B4 #A5A6A8;">
-      <a href="{{path('control_planta', {'id': entity.plantas|first.id})}}" class="btn btn-primary btn-block" role="button"><h1>Edificio {{ entity.nombre }}</h1></a>
+      <h1 class="text-center">Edificio <span class="label label-primary">{{ entity.nombre }}</span></h1>
       <div class="caption edif_data">
           <h3>Detalles</h3>
           <p id="edificio_{{entity.id}}_on" class="cont_on">AC encendidos: {{ badge('0') }}</p>
           <p id="edificio_{{entity.id}}_off" class="cont_off">AC apagados: {{ badge('0') }}</p>
           <div class="col-sm-12 text-center"><p>Ir a la planta:</p></div>
           <div class="col-sm-12 btn-group btn-group-justified">
-              <a href="{{path('control_planta', {'id': entity.plantas|first.id})}}" class="btn btn-primary" role="button">{{ entity.plantas|first.nombre }}</a>
-              <a href="{{path('control_planta', {'id': entity.plantas|last.id})}}" class="btn btn-primary" role="button">{{ entity.plantas|last.nombre }}</a>
+              {% for planta in entity.plantas %}
+              <a href="{{path('control_planta', {'id': planta.id})}}" class="btn btn-primary" role="button">{{ planta.nombre }}</a>
+              {% endfor %}
           </div>
           <div class="btn-group btn-group-justified" style="padding-top:10px;">
               <a href="#" data-link="{{path('control_edificio_off', { 'id': entity.id })}}" data-id="{{entity.id}}" class="btn btn-danger turn_off edificio" role="button">{{ icon('off') }} OFF ALL</a> 
