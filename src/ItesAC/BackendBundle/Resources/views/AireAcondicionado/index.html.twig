@@ -5,20 +5,22 @@
     <table class="records_list table">
         <thead>
             <tr>
-                <th>Id</th>
+                <th>Modelo</th>
+                <th>IP Arduino</th>
                 <th>Pin</th>
-                <th>Posicionx</th>
-                <th>Posiciony</th>
+                <th>Edificio</th>
+                <th>Planta</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('ac_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td><a href="{{ path('modelo_show', { 'id': entity.modelo.id }) }}">{{ entity.modelo.nombre }}</a></td>
+                <td><a href="{{ path('arduino_show', { 'id': entity.arduino.id }) }}">{{ entity.arduino.ip }}</a></td>
                 <td>{{ entity.pin }}</td>
-                <td>{{ entity.posicionX }}</td>
-                <td>{{ entity.posicionY }}</td>
+                <td><a href="{{ path('edificio_show', { 'id': entity.edificio.id }) }}">{{ entity.edificio.nombre }}</a></td>
+                <td><a href="{{ path('planta_show', { 'id': entity.planta.id }) }}">{{ entity.planta.nombre }}</a></td>
                 <td>
                     <div class="btn-group hidden-xs">
                         <a href="{{ path('ac_show', { 'id': entity.id }) }}" class="btn btn-default" role="button">show</a>
