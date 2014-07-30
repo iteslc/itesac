@@ -49,6 +49,9 @@
 {% block javascripts %}
      {{ parent() }}
      <script src="/Geekly%20Development%20House/ItesAC/web/vendor/jquery.countdown/dist/jquery.countdown.js"></script>
+     <script language="javascript">
+         var enab=true;
+     </script>
      {% javascripts 
         '@ItesACControlBundle/Resources/public/js/checkAC.js' 
         '@ItesACControlBundle/Resources/public/js/turnOff.js'  
@@ -56,4 +59,5 @@
         '@ItesACControlBundle/Resources/public/js/turnOn.js'%}
          <script type="text/javascript" src="{{ asset_url }}"></script>
      {% endjavascripts %}
+     {{ render(controller('ItesACControlBundle:Ajax:latelyAC'))}}
  {% endblock %}

@@ -283,6 +283,21 @@ class AjaxController extends Controller
         return new JsonResponse();
     }
     /**
+     * 
+     * @Template
+     */
+    public function latelyACAction()
+    {
+        
+        $turner=$this->getLatelyACTurnedOn();
+        if($turner){
+            $info=$this->getInfoOfLastAC($turner);
+            return $info;
+        }
+        
+        return array();
+    }
+    /**
      * get the ac turned on 30 seconds ago
      * 
      * @return \ItesAC\BackendBundle\Entity\AireAcondicionado
