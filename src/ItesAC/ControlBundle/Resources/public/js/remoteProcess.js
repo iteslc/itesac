@@ -29,8 +29,9 @@ function remoteProcess(json){
             if(json['tail']!==0){
                 $.ajax({
                     dataType: 'json',
-                    url: '/control/checkprocess',
+                    url: '/Geekly%20Development%20House/ItesAC/web/app_dev.php/control/checkprocess',
                     type:'GET',
+                    timeout:50000,
                     error: function(){
                         alert('hubo un error con el servidor.');
                         enab=true;

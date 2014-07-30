@@ -12,6 +12,7 @@ $(document).ready(function(){
             dataType: 'json',
             url: link,
             type:'GET',
+            timeout:50000,
             error: function(){
                 alert('hubo un error al tratar de encender.');
             },

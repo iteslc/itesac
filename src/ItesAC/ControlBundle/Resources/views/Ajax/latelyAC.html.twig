@@ -1,0 +1,11 @@
+{%if id is defined%}
+    <script language="javascript">
+        var info=[];
+        info["id"]={{id}};
+        info["planta"]={{planta}};
+        info["edificio"]={{edificio}};
+        info["lastOn"]="{{lastOn}}";
+        info["tail"]={{tail}};
+        remoteProcess(info);
+    </script>
+{%endif%}

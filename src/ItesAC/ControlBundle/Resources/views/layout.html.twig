@@ -40,4 +40,5 @@
         '@ItesACControlBundle/Resources/public/js/turnOn.js'%}
          <script type="text/javascript" src="{{ asset_url }}"></script>
      {% endjavascripts %}
+     {{ render(controller('ItesACControlBundle:Ajax:latelyAC'))}}
  {% endblock %}
