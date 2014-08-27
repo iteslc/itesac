@@ -17,7 +17,7 @@ background: #428bca;
 	<a href="{{ path('ac') }}" class="btn btn-default" role="button">
 	    Back to the list
 	</a>
-        <a href="ac" data-toggle="modal" data-target="#ac" class="btn btn-success" role="button">Posición AC</a>
+        <a href="#" data-toggle="modal" data-target="#ac" class="btn btn-success" role="button">Posición AC</a>
     </div>
 </div>
 {% endblock %}
@@ -32,14 +32,13 @@ background: #428bca;
       <div class="modal-body">
         <div id="ac_position" style="border: 2px solid black;width:100%; position: relative; margin: auto;">
             {%if entity.planta != null%}
-                <img class= "img-responsive"  src="/Geekly%20Development%20House/ItesAC/web/{{vich_uploader_asset(entity.planta, 'image')}}">
+                <img id="planta_image" class= "img-responsive"  src="/{{vich_uploader_asset(entity.planta, 'plantas_image')}}">
             {%else%}
-                <img class= "img-responsive"  src="">
+                <img id="planta_image" class= "img-responsive"  src="">
             {%endif%}
             
-            <img style="width:3.8%; height:3.3%;position: absolute;" src="{{ asset('/bundles/itesacbackend/images/ac_vector.png') | 
-                                imagine_filter('mini_ac') }}" 
-            id="actarget">
+            <img style="width:3.8%; position: absolute; left:{{ entity != null ? entity.posicionX : 0 }};top:{{ entity != null ? entity.posicionY : 0 }};" src="{{ asset('/bundles/itesacbackend/images/ac_vector.png') | 
+                                imagine_filter('mini_ac') }}" id="actarget">
         </div>
       </div>
         <div class="modal-footer">

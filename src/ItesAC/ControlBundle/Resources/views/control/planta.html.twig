@@ -15,10 +15,10 @@
         {%endif%}
     {%endfor%}
     <div id="ac_position" style="border: 2px solid black;width:100%; position: relative; margin: auto;margin-top:10px;"> 
-        <img class= "img-responsive"  src="{{asset('images/plantas/53bafdcfd568d.png')}}">
+        <img class= "img-responsive"  src="/{{vich_uploader_asset(planta, 'plantas_image')}}">
         {% for ac in planta.aires %}
-            <img id="ac_{{ac.id}}" class="ac" data-id="{{ac.id}}" style="width:3.8%; height:3.3%;position: absolute;left:{{ac.posicionX}}%;top:{{ac.posicionY}}%;"
-                src="{{vich_uploader_asset(ac.modelo, 'image') | imagine_filter('mini_ac') }}">
+            <img id="ac_{{ac.id}}" class="ac" data-id="{{ac.id}}" style="width:3.8%; position: absolute;left:{{ac.posicionX}}%;top:{{ac.posicionY}}%;"
+                src="{{vich_uploader_asset(ac.modelo, 'modelos_image') | imagine_filter('mini_ac') }}">
         {%endfor%}
     </div>
 {%endblock%}
