@@ -3,18 +3,23 @@
 {{ parent() }}
     <style>
    .is_on{   
-      -moz-box-shadow: 0px 0px 30px #A3FF0F; 
-      -webkit-box-shadow: 0px 0px 30px #A3FF0F; 
-      box-shadow: 0px 0px 30px #A3FF0F;
-      padding: 1px;
-      margin: 4px;
+      -moz-box-shadow: 0px 0px 13px #10C400; 
+      -webkit-box-shadow: 0px 0px 13px #10C400; 
+      box-shadow: 0px 0px 13px #10C400;
+    border:1px solid #10C400;
    }
    .is_off{   
-      -moz-box-shadow: 0px 0px 30px #F22222; 
-      -webkit-box-shadow: 0px 0px 30px #F22222; 
-      box-shadow: 0px 0px 30px #F22222;
-      padding: 1px;
-      margin: 4px;
+      -moz-box-shadow: 0px 0px 13px #F22222; 
+      -webkit-box-shadow: 0px 0px 13px #F22222; 
+      box-shadow: 0px 0px 13px #F22222;
+    border:1px solid #F22222;
+   }
+   #countdown{
+       margin-top: 5px;
+       margin-bottom: 5px;
+       padding: 10px;
+	border-radius:5px;
+	border:1px solid #CCC;
    }
     </style>
 {% endblock %}
@@ -40,7 +45,7 @@
 </div>
 {% endblock %}
  {% block process %}
-     <div id="countdown">
+     <div id="countdown" style="background-color: white;">
          <div id="infobf"></div>
      <span id="clock"></span>
      <div id="infoaf"></div>
@@ -48,9 +53,26 @@
  {% endblock %}
 {% block javascripts %}
      {{ parent() }}
-     <script src="/Geekly%20Development%20House/ItesAC/web/vendor/jquery.countdown/dist/jquery.countdown.js"></script>
+     <script src="/vendor/jquery.countdown/dist/jquery.countdown.js"></script>
      <script language="javascript">
          var enab=true;
+         $(document).ready(function(){
+             var height = $("#countdown").outerHeight(true);
+            window.setInterval(function(){
+                check();
+              }, 5000);
+            function check(){
+            height = $("#countdown").outerHeight(true);
+            if($('#infobf').is(':empty')){
+                $('#menubar').attr("style", "");
+                $("#countdown").hide(1000);
+            }
+            else{
+            $('#menubar').css("padding-bottom", height + "px");
+            $("#countdown").show(1000);
+            }
+            }
+          });
      </script>
      {% javascripts 
         '@ItesACControlBundle/Resources/public/js/checkAC.js' 
