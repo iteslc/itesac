@@ -7,7 +7,7 @@ $(document).ready(function(){
             url : '../planta/image/'+planta,
             type: 'GET',
             success: function(html) {
-                $('#ac_position').html(html);
+                $('#planta_image').attr('src',html);
             }
         });
     });

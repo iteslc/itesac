@@ -39,7 +39,7 @@ background: #428bca;
                 <a href="{{ path('ac_edit', { 'id': entity.id }) }}" class="btn btn-default" role="button">
                     Edit
                 </a>
-            <a href="ac" data-toggle="modal" data-target="#ac" class="btn btn-success" role="button">Posición AC</a>
+            <a href="#" data-toggle="modal" data-target="#ac" class="btn btn-success" role="button">Posición AC</a>
         </div>
         <div class="col-xs-4 col-sm-4 col-md-4">
                 {{ form(delete_form) }}
@@ -56,7 +56,7 @@ background: #428bca;
       </div>
       <div class="modal-body">
         <div id="ac_position" style="border: 2px solid black;width:100%; position: relative; margin: auto;"> 
-            <img class= "img-responsive"  src="/Geekly%20Development%20House/ItesAC/web/{{vich_uploader_asset(entity.planta, 'image')}}">
+            <img class= "img-responsive"  src="/{{vich_uploader_asset(entity.planta, 'plantas_image')}}">
             <img style="width:3.8%; height:3.3%;position: absolute;left:{{entity.posicionX}}%;top:{{entity.posicionY}}%;"
             src="{{ asset('/bundles/itesacbackend/images/ac_vector.png') | imagine_filter('mini_ac') }}">
         </div>

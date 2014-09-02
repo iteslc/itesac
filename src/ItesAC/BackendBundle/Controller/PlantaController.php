@@ -257,9 +257,9 @@ class PlantaController extends Controller
      */
     public function imageAction(Request $request,Planta $planta)
     {
-        if(!$request->isXmlHttpRequest()){
-            throw $this->createNotFoundException();
-        }
+//        if(!$request->isXmlHttpRequest()){
+//            throw $this->createNotFoundException();
+//        }
         
         return array(
             'planta' => $planta,
