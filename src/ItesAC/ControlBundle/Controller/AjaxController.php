@@ -85,9 +85,9 @@ class AjaxController extends Controller
      */
     public function checkAllAction(Request $request)
     {
-        if(!$request->isXmlHttpRequest()){
+        /*if(!$request->isXmlHttpRequest()){
             throw $this->createNotFoundException();
-        }
+        }*/
         //obtendra todos los ac
         $em = $this->getDoctrine()->getManager();
         $aires = $em->getRepository('ItesACBackendBundle:AireAcondicionado')->findAll();
@@ -228,9 +228,9 @@ class AjaxController extends Controller
      */
     public function turnOnACAction(Request $request, AireAcondicionado $ac,$tail)
     {
-        if(!$request->isXmlHttpRequest()){
+        /*if(!$request->isXmlHttpRequest()){
             throw $this->createNotFoundException();
-        }
+        }*/
         
         $turner=$this->getLatelyACTurnedOn();
         if($turner){
@@ -239,12 +239,14 @@ class AjaxController extends Controller
         }
         
         $em=$this->getDoctrine()->getEntityManager();
-        ACManager::turnOnAC($ac);
+        $data=ACManager::turnOnAC($ac);
         $ac->setLastOn();
         $ac->setTail($tail);
         $em->persist($ac);
         $em->flush();
-        return new JsonResponse();
+        $info=array();
+        $info[]=array(  'data'        => $data);
+        return new JsonResponse($info);
     }
     /**
      * Turns off ac
