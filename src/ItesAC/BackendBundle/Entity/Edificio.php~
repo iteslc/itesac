@@ -10,7 +10,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * Edificio
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="ItesAC\BackendBundle\Entity\EdificioRepository")
  * @UniqueEntity(fields="nombre", message="Ya existe ese edificio")
  */
 class Edificio
@@ -51,6 +51,12 @@ class Edificio
      * @ORM\OneToMany(targetEntity="AireAcondicionado", mappedBy="edificio")
      */
     private $aires;
+    /**
+     * @var ArrayCollection
+     * 
+     * @ORM\OneToMany(targetEntity="Arduino", mappedBy="edificio")
+     */
+    private $arduinos;
 
     /**
      * Constructor

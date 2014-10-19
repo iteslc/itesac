@@ -2033,7 +2033,7 @@
 
         var collection = $('#'+selector),
             list = collection.find('> ul'),
-            count = list.find('li').size()
+            count = list.find('> li').size()
         ;
 
         var newWidget = collection.attr('data-prototype');
@@ -2120,3 +2120,4 @@
     $(document).on('click.removefield.data-api', removeField, CollectionRemove.prototype.removeField);
 
  }(window.jQuery);
+ 

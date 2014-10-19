@@ -29,7 +29,7 @@ class AireAcondicionadoController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('ItesACBackendBundle:AireAcondicionado')->findAll();
+        $entities = $em->getRepository('ItesACBackendBundle:AireAcondicionado')->findAllWithJoins();
 
         return array(
             'entities' => $entities,
@@ -111,7 +111,7 @@ class AireAcondicionadoController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('ItesACBackendBundle:AireAcondicionado')->find($id);
+        $entity = $em->getRepository('ItesACBackendBundle:AireAcondicionado')->findByIdWithPlanta($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find AireAcondicionado entity.');
@@ -136,7 +136,7 @@ class AireAcondicionadoController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('ItesACBackendBundle:AireAcondicionado')->find($id);
+        $entity = $em->getRepository('ItesACBackendBundle:AireAcondicionado')->findByIdWithJoins($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find AireAcondicionado entity.');

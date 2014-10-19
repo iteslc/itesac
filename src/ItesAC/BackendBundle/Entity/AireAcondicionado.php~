@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * AireAcondicionado
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="ItesAC\BackendBundle\Entity\AireAcondicionadoRepository")
  */
 class AireAcondicionado
 {
@@ -344,5 +344,28 @@ class AireAcondicionado
     public function getLastOn()
     {
         return $this->lastOn;
+    }
+
+    /**
+     * Set tail
+     *
+     * @param integer $tail
+     * @return AireAcondicionado
+     */
+    public function setTail($tail)
+    {
+        $this->tail = $tail;
+
+        return $this;
+    }
+
+    /**
+     * Get tail
+     *
+     * @return integer 
+     */
+    public function getTail()
+    {
+        return $this->tail;
     }
 }

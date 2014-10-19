@@ -43,12 +43,12 @@ class AjaxController extends Controller
         
         //obtendra todos los ac
         $em = $this->getDoctrine()->getManager();
-        $aires = $em->getRepository('ItesACBackendBundle:AireAcondicionado')->findAll();
-        
+        $aires = $em->getRepository('ItesACBackendBundle:AireAcondicionado')->findAllWithArduino();
+        $env=$this->container->getParameter('kernel.environment');
         $info=array();
         //checara cada uno su estado
         foreach ($aires as $ac) {
-            if(!ACManager::checkAC($ac)){
+            if(!ACManager::checkAC($ac,$env)){
                 $info[]=array(  'id'        =>$ac->getId(),
                                 'planta'    =>$ac->getPlanta()->getId(),
                                 'edificio'  =>$ac->getEdificio()->getId());
@@ -69,10 +69,10 @@ class AjaxController extends Controller
         }
         //obtendra todos los ac
         $em = $this->getDoctrine()->getManager();
-        $aires = $em->getRepository('ItesACBackendBundle:AireAcondicionado')->findAll();
+        $aires = $em->getRepository('ItesACBackendBundle:AireAcondicionado')->findAllWithArduino();
         //apaga cada uno
         foreach ($aires as $ac) {
-            ACManager::turnOffAC($ac);
+            ACManager::turnOffAC($ac,$this->container->getParameter('kernel.environment'));
         }
         return new Response();
     }
@@ -85,20 +85,20 @@ class AjaxController extends Controller
      */
     public function checkAllAction(Request $request)
     {
-        /*if(!$request->isXmlHttpRequest()){
+        if(!$request->isXmlHttpRequest()){
             throw $this->createNotFoundException();
-        }*/
+        }
         //obtendra todos los ac
         $em = $this->getDoctrine()->getManager();
-        $aires = $em->getRepository('ItesACBackendBundle:AireAcondicionado')->findAll();
-        
+        $aires = $em->getRepository('ItesACBackendBundle:AireAcondicionado')->findAllWithArduino();
+        $env=$this->container->getParameter('kernel.environment');
         $info=array();
         //checara cada uno su estado
         foreach ($aires as $ac) {
             $info[]=array(  'id'        => $ac->getId(),
                             'planta'    => $ac->getPlanta()->getId(),
                             'edificio'  => $ac->getEdificio()->getId(),
-                            'isOn'      => ACManager::checkAC($ac));
+                            'isOn'      => ACManager::checkAC($ac,$env));
         }
         return new JsonResponse($info);
     }
@@ -106,7 +106,7 @@ class AjaxController extends Controller
      * Turns on all ac in the edificio
      * 
      * @Route("/edificio/{id}/on", name="control_edificio_on")
-     * @ParamConverter("edificio", class="ItesACBackendBundle:Edificio")
+     * @ParamConverter("edificio", class="ItesACBackendBundle:Edificio", options={"repository_method" = "findByIdForAireManagement"})
      * @Method("GET")
      */
     public function turnOnEdificioAction(Request $request,Edificio $edificio)
@@ -119,11 +119,11 @@ class AjaxController extends Controller
             $info=$this->getInfoOfLastAC($turner);
             return new JsonResponse($info);
         }
-        
+        $env=$this->container->getParameter('kernel.environment');
         $info=array();
         //checara cada uno su estado
         foreach ($edificio->getAires() as $ac) {
-            if(!ACManager::checkAC($ac)){
+            if(!ACManager::checkAC($ac,$env)){
                 $info[]=array(  'id'        =>$ac->getId(),
                                 'planta'    =>$ac->getPlanta()->getId(),
                                 'edificio'  =>$ac->getEdificio()->getId());
@@ -135,7 +135,7 @@ class AjaxController extends Controller
      * Turns off all ac in the edificio
      * 
      * @Route("/edificio/{id}/off", name="control_edificio_off")
-     * @ParamConverter("edificio", class="ItesACBackendBundle:Edificio")
+     * @ParamConverter("edificio", class="ItesACBackendBundle:Edificio", options={"repository_method" = "findByIdForAireManagement"})
      * @Method("GET")
      */
     public function turnOffEdificioAction(Request $request, Edificio $edificio)
@@ -145,7 +145,7 @@ class AjaxController extends Controller
         }
         //apaga cada uno
         foreach ($edificio->getAires() as $ac) {
-            ACManager::turnOffAC($ac);
+            ACManager::turnOffAC($ac,$this->container->getParameter('kernel.environment'));
         }
         return new Response();
     }
@@ -153,7 +153,7 @@ class AjaxController extends Controller
      * Turns on all ac in the planta
      * 
      * @Route("/planta/{id}/on", name="control_planta_on")
-     * @ParamConverter("planta", class="ItesACBackendBundle:Planta")
+     * @ParamConverter("planta", class="ItesACBackendBundle:Planta", options={"repository_method" = "findByIdForAireManagement"})
      * @Method("GET")
      */
     public function turnOnPlantaAction(Request $request,Planta $planta)
@@ -166,11 +166,11 @@ class AjaxController extends Controller
             $info=$this->getInfoOfLastAC($turner);
             return new JsonResponse($info);
         }
-        
+        $env=$this->container->getParameter('kernel.environment');
         $info=array();
         //checara cada uno su estado
         foreach ($planta->getAires() as $ac) {
-            if(!ACManager::checkAC($ac)){
+            if(!ACManager::checkAC($ac,$env)){
                 $info[]=array(  'id'        =>$ac->getId(),
                                 'planta'    =>$ac->getPlanta()->getId(),
                                 'edificio'  =>$ac->getEdificio()->getId());
@@ -182,7 +182,7 @@ class AjaxController extends Controller
      * Turns off all ac in the planta
      * 
      * @Route("/planta/{id}/off", name="control_planta_off")
-     * @ParamConverter("planta", class="ItesACBackendBundle:Planta")
+     * @ParamConverter("planta", class="ItesACBackendBundle:Planta", options={"repository_method" = "findByIdForAireManagement"})
      * @Method("GET")
      */
     public function turnOffPlantaAction(Request $request, Planta $planta)
@@ -192,7 +192,7 @@ class AjaxController extends Controller
         }
         //apaga cada uno
         foreach ($planta->getAires() as $ac) {
-            ACManager::turnOffAC($ac);
+            ACManager::turnOffAC($ac,$this->container->getParameter('kernel.environment'));
         }
         return new Response();
     }
@@ -200,7 +200,7 @@ class AjaxController extends Controller
      * Checks status of all ac in the planta
      * 
      * @Route("/planta/{id}/check", name="control_planta_check")
-     * @ParamConverter("planta", class="ItesACBackendBundle:Planta")
+     * @ParamConverter("planta", class="ItesACBackendBundle:Planta", options={"repository_method" = "findByIdForAireManagement"})
      * @Method("GET")
      * @Template()
      */
@@ -209,13 +209,14 @@ class AjaxController extends Controller
         if(!$request->isXmlHttpRequest()){
             throw $this->createNotFoundException();
         }
+        $env=$this->container->getParameter('kernel.environment');
         $info=array();
         //checara cada uno su estado
         foreach ($planta->getAires() as $ac) {
             $info[]=array(  'id'        => $ac->getId(),
                             'planta'    => $ac->getPlanta()->getId(),
                             'edificio'  => $ac->getEdificio()->getId(),
-                            'isOn'      => ACManager::checkAC($ac));
+                            'isOn'      => ACManager::checkAC($ac,$env));
         }
         return new JsonResponse($info);
     }
@@ -223,14 +224,14 @@ class AjaxController extends Controller
      * Turns on ac
      * 
      * @Route("/ac/{id}/on/{tail}", name="control_ac_on", defaults={"tail" = 0})
-     * @ParamConverter("ac", class="ItesACBackendBundle:AireAcondicionado")
+     * @ParamConverter("ac", class="ItesACBackendBundle:AireAcondicionado", options={"repository_method" = "findByIdWithArduino"})
      * @Method("GET")
      */
     public function turnOnACAction(Request $request, AireAcondicionado $ac,$tail)
     {
-        /*if(!$request->isXmlHttpRequest()){
+        if(!$request->isXmlHttpRequest()){
             throw $this->createNotFoundException();
-        }*/
+        }
         
         $turner=$this->getLatelyACTurnedOn();
         if($turner){
@@ -239,20 +240,18 @@ class AjaxController extends Controller
         }
         
         $em=$this->getDoctrine()->getEntityManager();
-        $data=ACManager::turnOnAC($ac);
+        ACManager::turnOnAC($ac,$this->container->getParameter('kernel.environment'));
         $ac->setLastOn();
         $ac->setTail($tail);
         $em->persist($ac);
         $em->flush();
-        $info=array();
-        $info[]=array(  'data'        => $data);
-        return new JsonResponse($info);
+        return new JsonResponse();
     }
     /**
      * Turns off ac
      * 
      * @Route("/ac/{id}/off", name="control_ac_off")
-     * @ParamConverter("ac", class="ItesACBackendBundle:AireAcondicionado")
+     * @ParamConverter("ac", class="ItesACBackendBundle:AireAcondicionado", options={"repository_method" = "findByIdWithArduino"})
      * @Method("GET")
      */
     public function turnOffACAction(Request $request, AireAcondicionado $ac)
@@ -260,7 +259,7 @@ class AjaxController extends Controller
         if(!$request->isXmlHttpRequest()){
             throw $this->createNotFoundException();
         }
-        ACManager::turnOffAC($ac);
+        ACManager::turnOffAC($ac,$this->container->getParameter('kernel.environment'));
         
         return new Response();
     }

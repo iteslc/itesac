@@ -12,7 +12,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  * Planta
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="ItesAC\BackendBundle\Entity\PlantaRepository")
  * @ORM\HasLifecycleCallbacks()
  * @UniqueEntity(fields="alias", message="Ya existe esa planta")
  * @Vich\Uploadable

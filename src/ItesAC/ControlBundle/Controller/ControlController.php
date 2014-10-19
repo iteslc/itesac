@@ -29,7 +29,7 @@ class ControlController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $edificios = $em->getRepository('ItesACBackendBundle:Edificio')->findAll();
+        $edificios = $em->getRepository('ItesACBackendBundle:Edificio')->findAllWithPlantas();
 
         return array(
             'edificios' => $edificios,
@@ -39,7 +39,7 @@ class ControlController extends Controller
      * List all ac in the planta
      *
      * @Route("/planta/{id}", name="control_planta")
-     * @ParamConverter("planta", class="ItesACBackendBundle:Planta")
+     * @ParamConverter("planta", class="ItesACBackendBundle:Planta", options={"repository_method" = "findByIdWithJoinsForControl"})
      * @Method("GET")
      * @Template()
      */

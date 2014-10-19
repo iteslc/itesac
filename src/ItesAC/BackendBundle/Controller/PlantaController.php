@@ -30,7 +30,7 @@ class PlantaController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('ItesACBackendBundle:Planta')->findAll();
+        $entities = $em->getRepository('ItesACBackendBundle:Planta')->findAllWithEdificio();
 
         return array(
             'entities' => $entities,

@@ -3923,8 +3923,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
-  color: #FFFFFF;
-  background-color: #056EA8;
+  color: #555555;
+  background-color: #e7e7e7;
 }
 .navbar-default .navbar-nav > .disabled > a,
 .navbar-default .navbar-nav > .disabled > a:hover,
@@ -5039,14 +5039,6 @@ button.close {
     -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
   }
-  .modal-sm {
-    width: 300px;
-  }
-}
-@media (min-width: 992px) {
-  .modal-lg {
-    width: 900px;
-  }
 }
 .tooltip {
   position: absolute;
@@ -5988,8 +5980,14 @@ td.visible-print {
   display: inline-block;
   width: auto;
 }
+.form-group .bc-collection {
+  margin-bottom: 0;
+}
 .form-group .bc-collection li + li {
   margin-top: 10px;
+}
+.form-group .bc-collection li:nth-last-child(1) {
+  margin-bottom: 10px;
 }
 .form-inline .form-group {
   margin-left: 0;

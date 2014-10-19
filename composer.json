@@ -23,9 +23,9 @@
             "type": "package",
             "package": {
                 "name": "jquery/jquery",
-                "version": "1.10.2",
+                "version": "1.11.1",
                 "dist": {
-                    "url": "http://code.jquery.com/jquery-1.10.2.js",
+                    "url": "http://code.jquery.com/jquery-1.11.1.js",
                     "type": "file"
                 }
             }
@@ -48,8 +48,7 @@
         "knplabs/gaufrette" : "0.2.*@dev",
         "knplabs/knp-gaufrette-bundle" : "dev-master",
         "twbs/bootstrap": "3.0.*",
-        "leafo/lessphp": "0.4.0",
-        "jquery/jquery":  "1.10.*",
+        "jquery/jquery":  "1.11.*",
         "braincrafted/bootstrap-bundle": "dev-master",
         "knplabs/knp-menu": "dev-master",
         "knplabs/knp-menu-bundle": "dev-master",

@@ -10,7 +10,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * Edificio
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="ItesAC\BackendBundle\Entity\EdificioRepository")
  * @UniqueEntity(fields="nombre", message="Ya existe ese edificio")
  */
 class Edificio
@@ -51,6 +51,12 @@ class Edificio
      * @ORM\OneToMany(targetEntity="AireAcondicionado", mappedBy="edificio")
      */
     private $aires;
+    /**
+     * @var ArrayCollection
+     * 
+     * @ORM\OneToMany(targetEntity="Arduino", mappedBy="edificio")
+     */
+    private $arduinos;
 
     /**
      * Constructor
@@ -178,5 +184,38 @@ class Edificio
     public function getAires()
     {
         return $this->aires;
+    }
+
+    /**
+     * Add arduinos
+     *
+     * @param \ItesAC\BackendBundle\Entity\Arduino $arduinos
+     * @return Edificio
+     */
+    public function addArduino(\ItesAC\BackendBundle\Entity\Arduino $arduinos)
+    {
+        $this->arduinos[] = $arduinos;
+
+        return $this;
+    }
+
+    /**
+     * Remove arduinos
+     *
+     * @param \ItesAC\BackendBundle\Entity\Arduino $arduinos
+     */
+    public function removeArduino(\ItesAC\BackendBundle\Entity\Arduino $arduinos)
+    {
+        $this->arduinos->removeElement($arduinos);
+    }
+
+    /**
+     * Get arduinos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getArduinos()
+    {
+        return $this->arduinos;
     }
 }

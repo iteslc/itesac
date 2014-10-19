@@ -29,7 +29,7 @@ class ArduinoController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('ItesACBackendBundle:Arduino')->findAll();
+        $entities = $em->getRepository('ItesACBackendBundle:Arduino')->findAllWithEdificio();
 
         return array(
             'entities' => $entities,

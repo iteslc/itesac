@@ -10,7 +10,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * Arduino
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="ItesAC\BackendBundle\Entity\ArduinoRepository")
  * @UniqueEntity(fields="ip", message="Ya existe un arduino con esa ip")
  */
 class Arduino
