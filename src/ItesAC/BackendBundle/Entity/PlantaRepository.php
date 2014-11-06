@@ -24,8 +24,8 @@ class PlantaRepository extends EntityRepository
         return $this->getEntityManager()
             ->createQuery(
                 'SELECT p, ac, ar FROM ItesACBackendBundle:Planta p
-                JOIN p.aires ac
-                JOIN ac.arduino ar
+                LEFT JOIN p.aires ac
+                LEFT JOIN ac.arduino ar
                 WHERE p.id = :id'
             )
             ->setParameter("id", $id)
@@ -35,8 +35,8 @@ class PlantaRepository extends EntityRepository
         return $this->getEntityManager()
             ->createQuery(
                 'SELECT p, ac, m, e, pl FROM ItesACBackendBundle:Planta p
-                JOIN p.aires ac
-                JOIN ac.modelo m
+                LEFT JOIN p.aires ac
+                LEFT JOIN ac.modelo m
                 JOIN p.edificio e
                 JOIN e.plantas pl
                 WHERE p.id = :id'

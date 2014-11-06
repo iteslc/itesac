@@ -24,8 +24,8 @@ class EdificioRepository extends EntityRepository
         return $this->getEntityManager()
             ->createQuery(
                 'SELECT e, ac, ar FROM ItesACBackendBundle:Edificio e
-                JOIN e.aires ac
-                JOIN ac.arduino ar
+                LEFT JOIN e.aires ac
+                LEFT JOIN ac.arduino ar
                 WHERE e.id = :id'
             )
             ->setParameter("id", $id)
