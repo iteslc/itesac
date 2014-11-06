@@ -10,18 +10,20 @@ security:
         in_memory:
             memory:
                 users:
-                    user:  { password: userpass, roles: [ 'ROLE_USER' ] }
-                    admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
+                    user:  { password: 1234, roles: [ 'ROLE_USER' ] }
+                    ismael: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
+                    dany: { password: 1234, roles: [ 'ROLE_ADMIN' ] }
 
     firewalls:
         dev:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/
             security: false
-        login:
-            security: false
-
         secured_area:
+            pattern:   ^/
             anonymous: ~
+            http_basic:
+                realm: "Area Privada"
 
     access_control:
-        #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
+        - { path: ^/control/, roles: ROLE_USER }
+        - { path: ^/backend/, roles: ROLE_ADMIN }
