@@ -18,7 +18,7 @@ class PlantaRepository extends EntityRepository
                 'SELECT p, e FROM ItesACBackendBundle:Planta p
                 JOIN p.edificio e'
             )
-            ->getResult();
+            ->getArrayResult();
     }
     public function findByIdForAireManagement($id){
         return $this->getEntityManager()

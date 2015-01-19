@@ -29,3 +29,5 @@ nbproject/*
 
 #bower
 web/vendor/*
+/Docs/
+/bin/

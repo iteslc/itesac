@@ -32,7 +32,7 @@ background: #428bca;
       <div class="modal-body">
         <div id="ac_position" style="border: 2px solid black;width:100%; position: relative; margin: auto;">
             {%if entity.planta != null%}
-                <img id="planta_image" class= "img-responsive"  src="/{{vich_uploader_asset(entity.planta, 'plantas_image')}}">
+                <img id="planta_image" class= "img-responsive"  src="/{{vich_uploader_asset(entity.planta, 'image')}}">
             {%else%}
                 <img id="planta_image" class= "img-responsive"  src="">
             {%endif%}

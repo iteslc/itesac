@@ -18,7 +18,7 @@ class EdificioRepository extends EntityRepository
                 'SELECT e, p FROM ItesACBackendBundle:Edificio e
                 JOIN e.plantas p'
             )
-            ->getResult();
+            ->getArrayResult();
     }
     public function findByIdForAireManagement($id){
         return $this->getEntityManager()
@@ -29,6 +29,6 @@ class EdificioRepository extends EntityRepository
                 WHERE e.id = :id'
             )
             ->setParameter("id", $id)
-            ->getResult();
+            ->getOneOrNullResult();
     }
 }

@@ -6,7 +6,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use ItesAC\BackendBundle\Entity\AireAcondicionado;
 use ItesAC\BackendBundle\Form\AireAcondicionadoType;
 
@@ -23,24 +22,24 @@ class AireAcondicionadoController extends Controller
      *
      * @Route("/", name="ac")
      * @Method("GET")
-     * @Template()
      */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('ItesACBackendBundle:AireAcondicionado')->findAllWithJoins();
+        $entities = $em->getRepository('ItesACBackendBundle:AireAcondicionado')
+                ->findAllWithJoins();
 
-        return array(
-            'entities' => $entities,
-        );
+        return $this->render(
+                'ItesACBackendBundle:AireAcondicionado:index.html.twig',
+                array('entities' => $entities,)
+                );
     }
     /**
      * Creates a new AireAcondicionado entity.
      *
      * @Route("/", name="ac_create")
      * @Method("POST")
-     * @Template("ItesACBackendBundle:AireAcondicionado:new.html.twig")
      */
     public function createAction(Request $request)
     {
@@ -56,10 +55,12 @@ class AireAcondicionadoController extends Controller
             return $this->redirect($this->generateUrl('ac_show', array('id' => $entity->getId())));
         }
 
-        return array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        );
+        return $this->render(
+                'ItesACBackendBundle:AireAcondicionado:new.html.twig',
+                array(
+                    'entity' => $entity,
+                    'form'   => $form->createView(),
+            ));
     }
 
     /**
@@ -87,17 +88,18 @@ class AireAcondicionadoController extends Controller
      *
      * @Route("/new", name="ac_new")
      * @Method("GET")
-     * @Template()
      */
     public function newAction()
     {
         $entity = new AireAcondicionado();
         $form   = $this->createCreateForm($entity,false);
 
-        return array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        );
+        return $this->render(
+                'ItesACBackendBundle:AireAcondicionado:new.html.twig',
+                array(
+                    'entity' => $entity,
+                    'form'   => $form->createView(),
+            ));
     }
 
     /**
@@ -105,7 +107,6 @@ class AireAcondicionadoController extends Controller
      *
      * @Route("/{id}", name="ac_show")
      * @Method("GET")
-     * @Template()
      */
     public function showAction($id)
     {
@@ -119,10 +120,12 @@ class AireAcondicionadoController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
-        );
+        return $this->render(
+                'ItesACBackendBundle:AireAcondicionado:show.html.twig',
+                array(
+                    'entity'      => $entity,
+                    'delete_form' => $deleteForm->createView(),
+            ));
     }
 
     /**
@@ -130,7 +133,6 @@ class AireAcondicionadoController extends Controller
      *
      * @Route("/{id}/edit", name="ac_edit")
      * @Method("GET")
-     * @Template()
      */
     public function editAction($id)
     {
@@ -145,11 +147,13 @@ class AireAcondicionadoController extends Controller
         $editForm = $this->createEditForm($entity,false);
         $deleteForm = $this->createDeleteForm($id);
 
-        return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        );
+        return $this->render(
+                'ItesACBackendBundle:AireAcondicionado:edit.html.twig',
+                array(
+                    'entity'      => $entity,
+                    'edit_form'   => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
+                ));
     }
 
     /**
@@ -176,7 +180,6 @@ class AireAcondicionadoController extends Controller
      *
      * @Route("/{id}", name="ac_update")
      * @Method("PUT")
-     * @Template("ItesACBackendBundle:AireAcondicionado:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
@@ -198,11 +201,13 @@ class AireAcondicionadoController extends Controller
             return $this->redirect($this->generateUrl('ac_show', array('id' => $id)));
         }
 
-        return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        );
+        return $this->render(
+                'ItesACBackendBundle:AireAcondicionado:edit.html.twig',
+                array(
+                    'entity'      => $entity,
+                    'edit_form'   => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
+                ));
     }
     /**
      * Deletes a AireAcondicionado entity.

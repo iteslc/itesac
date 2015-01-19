@@ -19,7 +19,7 @@ class AireAcondicionadoRepository extends EntityRepository
                 JOIN ac.planta p
                 JOIN ac.modelo m'
             )
-            ->getResult();
+            ->getArrayResult();
     }
     public function findAllWithArduino(){
         return $this->getEntityManager()

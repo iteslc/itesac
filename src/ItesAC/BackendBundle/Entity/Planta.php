@@ -64,9 +64,9 @@ class Planta
      * )
      * @Assert\Image(
      *     maxSize="1M",
-     *     mimeTypes={"image/png"},
+     *     mimeTypes={"image/png", "image/jpeg", "image/jpg"},
      *     maxSizeMessage="El limite de carga es de 1M",
-     *     mimeTypesMessage="Debe ser una imagen png"
+     *     mimeTypesMessage="Debe ser una imagen png, jpeg o jpg"
      * )
      * @Vich\UploadableField(mapping="plantas_image", fileNameProperty="imageName")
      */

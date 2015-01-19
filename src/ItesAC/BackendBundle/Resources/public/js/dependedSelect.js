@@ -12,16 +12,16 @@ $(document).ready(function(){
         var inp=$("input[name='_method']");
         if(inp!==null){
             data[inp.attr('name')]=inp.attr('value');
-            alert(data[inp.attr('name')]);
+//            alert(data[inp.attr('name')]);
         }
         $.ajax({
             url : $form.attr('action'),
             type: $form.attr('method'),
             data : data,
-            error : function(xhr,er){
-                alert("readyState: "+xhr.readyState+"\nstatus: "+xhr.status);
-                alert("responseText: "+xhr.responseText);
-            },
+//            error : function(xhr,er){
+//                alert("readyState: "+xhr.readyState+"\nstatus: "+xhr.status);
+//                alert("responseText: "+xhr.responseText);
+//            },
             success: function(html) {
                 // Replace current field ...
                 $($changer.attr('data-target')).replaceWith(

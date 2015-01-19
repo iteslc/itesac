@@ -35,7 +35,7 @@ background: #428bca;
       <div class="modal-body">
         <div id="ac_position" style="border: 2px solid black;width:100%; position: relative; margin: auto;"> 
             {% if entity.planta != null %}
-            <img id="planta_image" class= "img-responsive"  src="/{{vich_uploader_asset(entity.planta, 'plantas_image')}}">
+            <img id="planta_image" class= "img-responsive"  src="/{{vich_uploader_asset(entity.planta, 'image')}}">
             <img style="width:3.8%; height:3.3%;position: absolute;left:{{entity.posicionX}}%;top:{{entity.posicionY}}%;"
             src="{{ asset('/bundles/itesacbackend/images/ac_vector.png') | imagine_filter('mini_ac') }}" 
             id="actarget">

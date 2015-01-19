@@ -18,6 +18,6 @@ class ArduinoRepository extends EntityRepository
                 'SELECT ar, e FROM ItesACBackendBundle:Arduino ar
                 JOIN ar.edificio e'
             )
-            ->getResult();
+            ->getArrayResult();
     }
 }

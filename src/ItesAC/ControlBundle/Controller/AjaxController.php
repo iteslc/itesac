@@ -140,9 +140,9 @@ class AjaxController extends Controller
      */
     public function turnOffEdificioAction(Request $request, Edificio $edificio)
     {
-        if(!$request->isXmlHttpRequest()){
-            throw $this->createNotFoundException();
-        }
+//        if(!$request->isXmlHttpRequest()){
+//            throw $this->createNotFoundException();
+//        }
         //apaga cada uno
         foreach ($edificio->getAires() as $ac) {
             ACManager::turnOffAC($ac,$this->container->getParameter('kernel.environment'));
