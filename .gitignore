@@ -30,3 +30,7 @@ composer.phar
 /Docs/
 /bin
 /vendor/
+.project
+.buildpath
+.travis.yml
+.settings
