@@ -8,12 +8,12 @@ app/bootstrap*
 vendor/*
 */logs/*
 */cache/*
-web/bundles
-web/images
-web/fonts
-web/js
-web/css
-web/media
+/web/bundles
+/web/images
+/web/fonts
+/web/js
+/web/css
+/web/media
 
 # Configuration files
 app/config/parameters.ini
@@ -23,11 +23,10 @@ app/config/parameters.yml
 composer.phar
 
 #netbeans
-nbproject
+/nbproject
 
 #bower
 /web/vendor/*
 /Docs/
 /bin
 /vendor/
-nbproject/
